@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\Entity.cs" />
+    <Content Include="App_Code\IssueTrackerContext.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
