@@ -5,7 +5,7 @@ using System.Web;
 
 namespace IssueTracker.AppCode
 {
-    public class Entity
+    public class BaseEntity
     {
         public int Id { get; set; }
         public int UserCreatedId { get; set; }

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace IssueTracker.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : AppCode.BaseController
     {
         // GET: Home
         public ActionResult Index()
