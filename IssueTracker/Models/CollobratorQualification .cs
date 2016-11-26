@@ -5,7 +5,7 @@ using System.Web;
 
 namespace IssueTracker.Models
 {
-    public class CollobratorQualification : AppCode.Entity
+    public class CollobratorQualification : AppCode.BaseEntity
     {
 
     }

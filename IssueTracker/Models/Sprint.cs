@@ -5,7 +5,7 @@ using System.Web;
 
 namespace IssueTracker.Models
 {
-    public class Sprint : AppCode.Entity
+    public class Sprint : AppCode.BaseEntity
     {
 
     }

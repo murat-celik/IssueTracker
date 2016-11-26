@@ -5,7 +5,7 @@ using System.Web;
 
 namespace IssueTracker.Models
 {
-    public class Priority : AppCode.Entity
+    public class Priority : AppCode.BaseEntity
     {
 
     }

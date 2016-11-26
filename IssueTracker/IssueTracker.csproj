@@ -115,14 +115,31 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppCode\Entity.cs" />
+    <Compile Include="AppCode\BaseController.cs" />
+    <Compile Include="AppCode\BaseEntity.cs" />
     <Compile Include="AppCode\IssueTrackerContext.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Collobrator.cs" />
+    <Compile Include="Models\CollobratorQualification .cs" />
+    <Compile Include="Models\Column.cs" />
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\History.cs" />
+    <Compile Include="Models\Issue.cs" />
+    <Compile Include="Models\IssueTag.cs" />
+    <Compile Include="Models\Priority.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Qualification .cs" />
+    <Compile Include="Models\Sprint.cs" />
+    <Compile Include="Models\State.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\Type.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Watcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
