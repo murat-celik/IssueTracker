@@ -7,7 +7,7 @@ using System.Web;
 
 namespace IssueTracker.AppCode
 {
-    public class IssueTrackerRepository<T> : IRepository<T> where T : class
+    public class IssueTrackerRepository<T> : IRepository<T> where T : class, IBaseEntity
     {
         private DbSet<T> _DbSet;
 
@@ -18,12 +18,21 @@ namespace IssueTracker.AppCode
 
         public void Insert(T Entity)
         {
+            Entity.UserUpdatedID = 1; //sonra düşünülecek
+            Entity.UserCreatedID = 1; //sonra düşün
+
+            Entity.DateTimeCreated = DateTime.Now;
+            Entity.DateTimeUpdated = DateTime.Now;
+
             this._DbSet.Add(Entity);
         }
 
 
         public void Update(T Entity)
         {
+            Entity.UserUpdatedID = 1; //sonra düşünülecek
+            Entity.DateTimeUpdated = DateTime.Now;
+
             this._DbSet.Attach(Entity);
         }
 
@@ -32,13 +41,21 @@ namespace IssueTracker.AppCode
             return _DbSet.Find(EntityId);
         }
 
-        public IEnumerable<T> Select(Expression<Func<T, bool>> Filter = null)
+        public IQueryable<T> Select(Expression<Func<T, bool>> Filter = null, List<string> Includes = null)
         {
+            IQueryable<T> oQuery = this._DbSet;
+            foreach (string item in Includes)
+            {
+                oQuery = oQuery.Include(item);
+            }
+
             if (Filter != null)
             {
-                return _DbSet.Where(Filter);
+               
+                return oQuery.Where(Filter);
             }
-            return this._DbSet;
+
+            return oQuery;
         }
 
         public void Delete(object EntityId)

@@ -56,6 +56,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -125,7 +126,14 @@
   <ItemGroup>
     <Compile Include="AppCode\BaseController.cs" />
     <Compile Include="AppCode\BaseEntity.cs" />
+    <Compile Include="AppCode\EntityController.cs" />
+    <Compile Include="AppCode\_IBaseEntity.cs" />
+    <Compile Include="AppCode\IssueTrackerUnitOfWork.cs" />
+    <Compile Include="AppCode\_IUnitOfWork.cs" />
+    <Compile Include="AppCode\_Facede.cs" />
+    <Compile Include="AppCode\_IRepository.cs" />
     <Compile Include="AppCode\IssueTrackerContext.cs" />
+    <Compile Include="AppCode\IssueTrackerRepository.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

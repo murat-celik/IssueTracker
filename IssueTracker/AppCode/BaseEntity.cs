@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IssueTracker.AppCode
 {
-    public abstract class BaseEntity
+    public abstract class BaseEntity : IBaseEntity
     {
         [Key Column(Order = 0)]
         public int ID { get; set; }

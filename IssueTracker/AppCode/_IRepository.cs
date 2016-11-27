@@ -6,7 +6,7 @@ using System.Web;
 
 namespace IssueTracker.AppCode
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : class,  IBaseEntity
     {
         void Insert(T Entity);
         void Update(T Entity);
@@ -15,6 +15,6 @@ namespace IssueTracker.AppCode
         void Delete(T Entity);
 
         T FindById(object EntityId);
-        IEnumerable<T> Select(Expression<Func<T, bool>> Filter = null);
+        IQueryable<T> Select(Expression<Func<T, bool>> Filter = null, List<string> Includes = null);
     }
 }
