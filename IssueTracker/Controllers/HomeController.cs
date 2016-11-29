@@ -14,15 +14,15 @@ namespace IssueTracker.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            Team oTeam = new Team();
-            oTeam.Name = "Hasan";
-            oTeam.Desription = "Ali";
-            this.oIssueTrackerUnitOfWork.TeamRepository.Insert(oTeam);
-            this.oIssueTrackerUnitOfWork.Save();
+            //Team oTeam = new Team();
+            //oTeam.Name = "Hasan";
+            //oTeam.Desription = "Ali";
+            //this.oIssueTrackerUnitOfWork.TeamRepository.Insert(oTeam);
+            //this.oIssueTrackerUnitOfWork.Save();
 
-            var Teams =  this.oIssueTrackerUnitOfWork.TeamRepository.Select(null, new List<string> { "UserUpdated", "UserCreated" }).ToList();
+            //var Teams =  this.oIssueTrackerUnitOfWork.TeamRepository.Select(null, new List<string> { "UserUpdated", "UserCreated" }).ToList();
             
-            return View(Teams);
+            return View();
         }
 
         public ActionResult me()
