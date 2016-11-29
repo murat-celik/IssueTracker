@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace IssueTracker.AppCode
+namespace IssueTracker.Repository
 {
-    public interface IRepository<T> where T : class,  IBaseEntity
+    public interface IRepository<T> where T : class, AppCode.IBaseEntity
     {
         void Insert(T Entity);
         void Update(T Entity);

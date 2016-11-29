@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 using IssueTracker.Models;
+using IssueTracker.UnitOfWork;
 
 namespace IssueTracker.Controllers
 {
@@ -12,19 +14,20 @@ namespace IssueTracker.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //Team oTeam = new Team();
-            //oTeam.Name = "Şevkey";
-            //oTeam.Desription = "Tekin";
-            //this.oFacade.Model<Team>().Save(oTeam);
+            Team oTeam = new Team();
+            oTeam.Name = "Hasan";
+            oTeam.Desription = "Ali";
+            this.oIssueTrackerUnitOfWork.TeamRepository.Insert(oTeam);
+            this.oIssueTrackerUnitOfWork.Save();
 
-            var Teams = this.oFacade.Model<Team>().Select(null, new List<string> { "UserUpdated", "UserCreated" }).ToList();
+            var Teams =  this.oIssueTrackerUnitOfWork.TeamRepository.Select(null, new List<string> { "UserUpdated", "UserCreated" }).ToList();
             
             return View(Teams);
         }
 
-        public ActionResult  me()
+        public ActionResult me()
         {
-            var Teams = this.oFacade.Model<Team>().Select(null, new List<string> { "UserUpdated", "UserCreated" }).ToList();
+            var Teams = this.oIssueTrackerUnitOfWork.TeamRepository.Select(null, new List<string> { "UserUpdated", "UserCreated" }).ToList();
 
             return Json(Teams);
         }

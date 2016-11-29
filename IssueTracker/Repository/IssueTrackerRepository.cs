@@ -5,13 +5,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace IssueTracker.AppCode
+namespace IssueTracker.Repository
 {
-    public class IssueTrackerRepository<T> : IRepository<T> where T : class, IBaseEntity
+    public class IssueTrackerRepository<T> : IRepository<T> where T : class, AppCode.IBaseEntity
     {
         private DbSet<T> _DbSet;
 
-        public IssueTrackerRepository(IssueTrackerContext db)
+        public IssueTrackerRepository(AppCode.IssueTrackerContext db)
         {
             this._DbSet = db.Set<T>();
         }
@@ -20,6 +20,8 @@ namespace IssueTracker.AppCode
         {
             Entity.UserUpdatedID = 1; //sonra düşünülecek
             Entity.UserCreatedID = 1; //sonra düşün
+
+            Entity.Status = Models.StatusEnum.Active;
 
             Entity.DateTimeCreated = DateTime.Now;
             Entity.DateTimeUpdated = DateTime.Now;

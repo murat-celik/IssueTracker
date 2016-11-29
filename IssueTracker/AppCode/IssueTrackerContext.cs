@@ -13,6 +13,4 @@ namespace IssueTracker.AppCode
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<IssueTrackerContext, IssueTracker.Migrations.Configuration>());
         }
     }
-
-
 }

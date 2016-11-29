@@ -8,7 +8,7 @@ namespace IssueTracker.AppCode
 {
     public class BaseController : Controller
     {
-        public IssueTracker.AppCode.IssueTrackerFacede oFacade = new AppCode.IssueTrackerFacede();
+        public  UnitOfWork.IssueTrackerUnitOfWork oIssueTrackerUnitOfWork = new UnitOfWork.IssueTrackerUnitOfWork();
 
         protected override void Initialize(System.Web.Routing.RequestContext RequestContext)
         {
