@@ -1,0 +1,22 @@
+﻿body {
+    /*padding-top: 50px;*/
+    padding-bottom: 20px;
+    background-color: whitesmoke;
+}
+
+i {
+    cursor: pointer;
+}
+
+a {
+    color: #3A5796;
+}
+
+.navbar {
+    background-color: #33628a !important;
+    border-radius: 0px;
+}
+
+    .navbar a {
+        color: #fff !important;
+    }
