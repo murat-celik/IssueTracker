@@ -10,7 +10,8 @@ namespace IssueTracker.AppCode
         public DbSet<Collobrator> Collobrators { get; set; }
         public DbSet<Qualification> Qualifications { get; set; }
         public DbSet<CollobratorQualification> CollobratorQualifications { get; set; }
-        
+
+        public DbSet<Project> Projects { get; set; }
 
         public IssueTrackerContext()
         {
