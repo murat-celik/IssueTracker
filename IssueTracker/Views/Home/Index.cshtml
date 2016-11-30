@@ -3,10 +3,74 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">My Teams</div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">My Project</div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
+    <div class="col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">My Issues</div>
+            <div class="panel-body">
+
+                <table class="table table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>mdo</td>
+                            <td><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>fat</td>
+                            <td><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>twitter</td>
+                            <td><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 <button id="mybutton" onclick="getMyJson()">Murat</button>
-
 
 <script type="text/javascript">
 
@@ -16,8 +80,7 @@
                 type: 'POST',
                 url: "/home/me",
                 dataType: 'JSON',
-                success: function (result)
-                {
+                success: function (result) {
                     console.log(result);
                 }
             }

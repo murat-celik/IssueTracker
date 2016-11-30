@@ -102,6 +102,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\headerbg.png" />
     <Content Include="Content\IssueTracker.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -128,6 +129,7 @@
     <Compile Include="AppCode\BaseController.cs" />
     <Compile Include="AppCode\BaseEntity.cs" />
     <Compile Include="AppCode\_IBaseEntity.cs" />
+    <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="UnitOfWork\IssueTrackerUnitOfWork.cs" />
     <Compile Include="UnitOfWork\_IUnitOfWork.cs" />
     <Compile Include="Repository\_IRepository.cs" />
@@ -167,6 +169,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Issue\Detail.cshtml" />
+    <Content Include="Views\Shared\_Layout-Container.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
