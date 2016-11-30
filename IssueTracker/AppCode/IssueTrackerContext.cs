@@ -8,6 +8,7 @@ namespace IssueTracker.AppCode
         public DbSet<User> Users { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Collobrator> Collobrators { get; set; }
+        public DbSet<Qualification> Qualifications { get; set; }
 
 
         public IssueTrackerContext()
