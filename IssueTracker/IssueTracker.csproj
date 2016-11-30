@@ -151,7 +151,7 @@
     <Compile Include="Models\Priority.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Qualification .cs" />
-    <Compile Include="Models\Sprint.cs" />
+    <Compile Include="Models\Board.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\Team.cs" />
