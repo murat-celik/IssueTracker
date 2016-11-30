@@ -145,7 +145,7 @@
     <Compile Include="Models\CollobratorQualification .cs" />
     <Compile Include="Models\Column.cs" />
     <Compile Include="Models\Document.cs" />
-    <Compile Include="Models\History.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Issue.cs" />
     <Compile Include="Models\IssueTag.cs" />
     <Compile Include="Models\Priority.cs" />
