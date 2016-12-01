@@ -9,9 +9,20 @@ namespace IssueTracker.Models
 {
     public class Project : AppCode.BaseEntity
     {
+        public int TeamID { get; set; }
         [Required, StringLength(128), Column(TypeName = "varchar")]
         public string Name { get; set; }
         [Column(TypeName = "varchar(MAX)")]
         public string Desription { get; set; }
-    }
+
+        /**/
+        [ForeignKey("TeamID")]
+        public Team Team { get; set; }
+        [NotMapped]
+        public List<Board> Boards { get; set; }
+        [NotMapped]
+        public List<Issue> Issues { get; set; }
+        [NotMapped]
+        public List<Tag> Tags { get; set; }
+}
 }
