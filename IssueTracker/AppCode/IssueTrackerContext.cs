@@ -14,6 +14,8 @@ namespace IssueTracker.AppCode
         public DbSet<Project> Projects { get; set; }
         public DbSet<State> States { get; set; }
 
+        public DbSet<Board> Boards { get; set; }
+
 
         public IssueTrackerContext()
         {
