@@ -5,7 +5,7 @@ using System.Web;
 
 namespace IssueTracker.Models
 {
-    public class History : AppCode.BaseEntity
+    public class Comment : AppCode.BaseEntity
     {
 
     }
