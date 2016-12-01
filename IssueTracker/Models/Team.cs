@@ -13,5 +13,11 @@ namespace IssueTracker.Models
         public string Name { get; set; }
         [Required,Column(TypeName = "varchar(MAX)")]
         public string Desription { get; set; }
+
+        [NotMapped]
+        public List<Collobrator> Collobrators { get; set; }
+        [NotMapped]
+        public List<Project> Projects { get; set; }
+       
     }
 }
