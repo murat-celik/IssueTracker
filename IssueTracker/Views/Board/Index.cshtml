@@ -1,0 +1,232 @@
+﻿<style type="text/css">
+    .row > div {
+        border: 1px solid #ccc;
+    }
+</style>
+
+<style>
+    .sortable-td > .panel {
+        cursor: move;
+    }
+
+    .sortable-td:hover {
+        background-color: rgba(128, 128, 128, 0.54);
+    }
+
+    .ui-sortable-helper {
+        transform: scale(0.1, 0.6);
+        border: 1px solid #0094ff;
+    }
+</style>
+<script>
+    oldParent = null;
+    $(function () {
+        $(".sortable-td").sortable({
+            connectWith: ".connectedSortable",
+            start: function (event, ui) {
+               // $(ui.item[0]).parent().css('background-color', '#444');
+                oldParent = $(ui.item[0]).parent();
+                console.log(oldParent);
+                //console.log(ui.item[0].innerText);
+            },
+            stop: function (event, ui) {
+                //console.log(ui.item[0].innerText);
+            }
+        }).disableSelection();
+    });
+
+    function displaySuccess() {
+        $("#displaySuccess").show("blind");
+        setTimeout(function () {
+            $("#displaySuccess").hide("blind");
+        }, 1000);
+
+    }
+</script>
+
+<div class="row">
+    <div id="displaySuccess" style="display:none; position:fixed; height:42px; background-color:#009052; text-align: center; left:0px; right:0px; top:0px; z-index:1000000000; color:#ffffff;">
+        <h4 style="">Successful..</h4>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>Murat</td>
+                        <td>çelik</td>
+                        <td>Kaan</td>
+                        <td>Murat</td>
+                        <td>çelik</td>
+                        <td>Kaan</td>
+                        <td>çelik <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">Open Modal</button></td>
+                        <td>Kaan <input type="submit" value="Click Me" onclick="displaySuccess();" /></td>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td class="sortable-td connectedSortable">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                    </td>
+                    <td class="sortable-td connectedSortable">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                    </td>
+                    <td class="sortable-td connectedSortable">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                    </td>
+                    <td class="sortable-td connectedSortable">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                    </td>
+                    <td class="sortable-td connectedSortable">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                    </td>
+                    <td class="sortable-td connectedSortable">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                    </td>
+                    <td class="sortable-td connectedSortable">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                    </td>
+                    <td class="sortable-td connectedSortable">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Panel heading without title</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

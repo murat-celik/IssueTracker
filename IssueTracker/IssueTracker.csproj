@@ -129,6 +129,7 @@
     <Compile Include="AppCode\BaseController.cs" />
     <Compile Include="AppCode\BaseEntity.cs" />
     <Compile Include="AppCode\_IBaseEntity.cs" />
+    <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="UnitOfWork\IssueTrackerUnitOfWork.cs" />
     <Compile Include="UnitOfWork\_IUnitOfWork.cs" />
@@ -171,6 +172,7 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Issue\Detail.cshtml" />
     <Content Include="Views\Shared\_Layout-Container.cshtml" />
+    <Content Include="Views\Board\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
