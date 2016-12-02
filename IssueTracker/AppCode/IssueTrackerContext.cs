@@ -17,10 +17,14 @@ namespace IssueTracker.AppCode
         public DbSet<Board> Boards { get; set; }
         public DbSet<Column> Columns { get; set; }
 
-        public DbSet<Issue> Issues { get; set; }
-        public DbSet<Comment> Comments { get; set; }
         public DbSet<Priority> Priorities { get; set; }
         public DbSet<Type> Types { get; set; }
+
+        public DbSet<Issue> Issues { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<IssueTag> IssueTags { get; set; }
+
+        
 
 
 
