@@ -23,10 +23,7 @@ namespace IssueTracker.AppCode
         public DbSet<Issue> Issues { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<IssueTag> IssueTags { get; set; }
-
-        
-
-
+        public DbSet<Document> Documents { get; set; }
 
         public IssueTrackerContext()
         {
