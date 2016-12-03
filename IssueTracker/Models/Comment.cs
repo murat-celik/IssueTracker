@@ -14,6 +14,6 @@ namespace IssueTracker.Models
         public Collobrator Collobrator { get; set; }
 
         [Required, Column(TypeName = "varchar(MAX)")]
-        public string Desription { get; set; }
+        public string Description { get; set; }
     }
 }

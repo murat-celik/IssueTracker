@@ -12,7 +12,7 @@ namespace IssueTracker.Models
         [Required,StringLength(128), Column(TypeName = "varchar")]
         public string Name { get; set; }
         [Required,Column(TypeName = "varchar(MAX)")]
-        public string Desription { get; set; }
+        public string Description { get; set; }
 
         [NotMapped]
         public List<Collobrator> Collobrators { get; set; }

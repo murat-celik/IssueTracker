@@ -13,7 +13,7 @@ namespace IssueTracker.Models
         [Required, StringLength(128), Column(TypeName = "varchar")]
         public string Name { get; set; }
         [Column(TypeName = "varchar(MAX)")]
-        public string Desription { get; set; }
+        public string Description { get; set; }
 
         public DateTime DateTimeStart { get; set; }
         public DateTime DateTimeFinish { get; set; }
