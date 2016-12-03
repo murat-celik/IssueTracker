@@ -24,6 +24,7 @@ namespace IssueTracker.AppCode
         public DbSet<Comment> Comments { get; set; }
         public DbSet<IssueTag> IssueTags { get; set; }
         public DbSet<Document> Documents { get; set; }
+        public DbSet<Watcher> Watchers { get; set; }
 
         public IssueTrackerContext()
         {

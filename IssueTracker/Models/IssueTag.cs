@@ -8,11 +8,11 @@ namespace IssueTracker.Models
 {
     public class IssueTag : AppCode.BaseEntity
     {
-        public int IssueID { get; set; }
+        public int? IssueID { get; set; }
         [ForeignKey("IssueID")]
         public Issue Issue { get; set; }
 
-        public int TagID { get; set; }
+        public int? TagID { get; set; }
         [ForeignKey("TagID")]
         public Tag Tag { get; set; }
     }
