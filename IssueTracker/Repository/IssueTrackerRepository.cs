@@ -21,7 +21,7 @@ namespace IssueTracker.Repository
             Entity.UserUpdatedID = 1; //sonra düşünülecek
             Entity.UserCreatedID = 1; //sonra düşün
 
-            Entity.Status = Models.StatusEnum.Active;
+            Entity.Status = AppCode.StatusEnum.Active;
 
             Entity.DateTimeCreated = DateTime.Now;
             Entity.DateTimeUpdated = DateTime.Now;
@@ -36,6 +36,19 @@ namespace IssueTracker.Repository
             Entity.DateTimeUpdated = DateTime.Now;
 
             this._DbSet.Attach(Entity);
+        }
+
+        public void Save(T Entity)
+        {
+            if (Entity.IsNewRecord())
+            {
+                Insert(Entity);
+            }
+            else
+            {
+                Update(Entity);
+            }
+
         }
 
         public T FindById(object EntityId)
@@ -53,7 +66,7 @@ namespace IssueTracker.Repository
 
             if (Filter != null)
             {
-               
+
                 return oQuery.Where(Filter);
             }
 

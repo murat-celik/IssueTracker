@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using IssueTracker.Models;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Validation;
+using System.Collections.Generic;
 
 namespace IssueTracker.AppCode
 {
@@ -22,5 +24,10 @@ namespace IssueTracker.AppCode
         public User UserCreated { get; set; }
         [ForeignKey("UserUpdatedID"), Column(Order = 2)]
         public User UserUpdated { get; set; }
+
+        public virtual bool IsNewRecord()
+        {
+            return this.ID == 0 ? true : false;
+        }
     }
 }

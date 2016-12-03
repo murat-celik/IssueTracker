@@ -1,5 +1,7 @@
 ﻿using IssueTracker.Models;
 using System;
+using System.Collections.Generic;
+using System.Data.Entity.Validation;
 
 namespace IssueTracker.AppCode
 {
@@ -14,5 +16,8 @@ namespace IssueTracker.AppCode
         DateTime DateTimeUpdated { get; set; }
 
         StatusEnum Status { get; set; }
+
+        bool IsNewRecord();
+       
     }
 }

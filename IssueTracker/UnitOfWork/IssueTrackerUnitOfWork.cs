@@ -39,11 +39,33 @@ namespace IssueTracker.UnitOfWork
                 this.oIssueTrackerContext.Database.CurrentTransaction.Commit();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 this.oIssueTrackerContext.Database.CurrentTransaction.Rollback();
                 return false;
             }
+        }
+
+        public string GetValidationErrors()
+        {
+            string ErrorMessage = "";
+            if (this.oIssueTrackerContext.GetValidationErrors() != null)
+            {
+                ErrorMessage = "<ul>";
+
+                foreach (var item in this.oIssueTrackerContext.GetValidationErrors())
+                {
+                    foreach (var error in item.ValidationErrors)
+                    {
+                        ErrorMessage = ErrorMessage + "<li>" + error.ErrorMessage + " </li> ";
+                    }
+
+                }
+
+                ErrorMessage = ErrorMessage + "</ul>";
+            }
+
+            return ErrorMessage;
         }
 
         protected virtual void Dispose(bool disposing)
