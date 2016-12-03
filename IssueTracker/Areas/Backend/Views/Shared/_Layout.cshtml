@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Areas/Backend/Content/Css/IssueTrackerBackend.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="~/Areas/Backend/Content/Js/GlobalFunction.js"></script>
+    <script src="~/Areas/Backend/Content/Js/IssueTrackerBackend.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-default header">
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Issue Tracker Manager</a>
+                </div>
+                <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Dashboard</a> </li>
+                        <li><a href="#">Agile Board</a></li>
+                        <li><a href="#">Issues</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    <div id="global-modals" class="container-fluid">
+        <div class="row">
+            <div id="displaySuccess">
+                <h4 style="">Successful <i class="glyphicon glyphicon-ok"></i></h4>
+            </div>
+
+            <div id="displayFailed">
+                <h4 style="">Failed <i class="glyphicon glyphicon-ban-circle"></i></h4>
+            </div>
+
+            <div id="displayMessage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="displayMessage">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="team-modal-label">Information Message</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p id="display-message-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="startLoading" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="startLoading">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="team-modal-label">Loading...</h4>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img src="~/Areas/Backend/Images/loading.gif" style="width:32px; height:32px;" />
+                            <br /><br />
+                            <p id="start-loading-message-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

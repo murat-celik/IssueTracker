@@ -98,6 +98,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Backend\Content\Css\IssueTrackerBackend.css" />
+    <Content Include="Areas\Backend\Content\Css\Timeline.css" />
+    <Content Include="Areas\Backend\Content\Js\GlobalFunction.js" />
+    <Content Include="Areas\Backend\Content\Js\IssueTrackerBackend.js" />
+    <Content Include="Areas\Backend\Images\loading.gif" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -114,6 +119,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Backend\Views\web.config" />
+    <Content Include="Areas\Backend\Views\Manager\Index.cshtml" />
+    <Content Include="Areas\Backend\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Backend\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -128,7 +137,11 @@
   <ItemGroup>
     <Compile Include="AppCode\BaseController.cs" />
     <Compile Include="AppCode\BaseEntity.cs" />
+    <Compile Include="AppCode\ResultData.cs" />
     <Compile Include="AppCode\_IBaseEntity.cs" />
+    <Compile Include="Areas\Backend\BackendAreaRegistration.cs" />
+    <Compile Include="Areas\Backend\Controllers\ManagerController.cs" />
+    <Compile Include="Areas\Backend\Controllers\TeamController.cs" />
     <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="UnitOfWork\IssueTrackerUnitOfWork.cs" />
@@ -159,7 +172,7 @@
     <Compile Include="Models\Type.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Watcher.cs" />
-    <Compile Include="Models\_Enums.cs" />
+    <Compile Include="AppCode\_Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +195,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Backend\Models\" />
+    <Folder Include="Areas\Backend\Views\Default\" />
+    <Folder Include="Areas\Backend\Views\Team\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
