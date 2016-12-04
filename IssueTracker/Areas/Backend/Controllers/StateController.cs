@@ -7,30 +7,23 @@ using IssueTracker.Models;
 
 namespace IssueTracker.Areas.Backend.Controllers
 {
-    public class ManagerController : AppCode.BaseController
+    public class StateController : AppCode.BaseController
     {
-        // GET: Backend/Home
-        public ActionResult Index()
-        {
-            List<Team> Teams = this.oIssueTrackerUnitOfWork.TeamRepository.Select().ToList<Team>();
-            ViewData["Teams"] = Teams;
-            List<State> States = this.oIssueTrackerUnitOfWork.StateRepository.Select().ToList<State>();
-            ViewData["States"] = States;
-            return View();
-        }
 
+        // POST: Backend/Project/Create
         [HttpPost]
-        public ActionResult CreateTeam(Team oTeam)
+        public ActionResult Create(State oState)
         {
+
             try
             {
-                this.oIssueTrackerUnitOfWork.TeamRepository.Save(oTeam);
+                this.oIssueTrackerUnitOfWork.StateRepository.Save(oState);
 
                 if (this.oIssueTrackerUnitOfWork.Save())
                 {
                     this.oResultData.Status = AppCode.StatusEnum.Active;
-                    this.oResultData.Data = oTeam;
-                    this.oResultData.Message = "Team Create Successful.";
+                    this.oResultData.Data = oState;
+                    this.oResultData.Message = "State Create Successful.";
                     return Json(oResultData);
                 }
 
@@ -41,7 +34,9 @@ namespace IssueTracker.Areas.Backend.Controllers
                 this.oResultData.Status = AppCode.StatusEnum.Pasive;
                 this.oResultData.Message = oIssueTrackerUnitOfWork.GetValidationErrors();
                 return Json(oResultData);
+
             }
         }
+
     }
 }

@@ -19,6 +19,21 @@
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
+                <span> States </span>
+                <i class="glyphicon glyphicon-plus pull-right" data-toggle="modal" data-target="#state-modal"></i>
+            </div>
+            <div class="panel-body">
+                <ul id="list-group-states" class="list-group">
+                    @foreach (var item in ViewData["States"] as List<IssueTracker.Models.State>)
+                    {
+                        <li class="list-group-item"><a>@item.Name</a> <label class="pull-right label  @{if (item.IsResolved == true) { Write("label-success"); } else { Write("label-default"); } } ">Resolved</label> </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
                 <span> Collobrator </span>
                 <i class="glyphicon glyphicon-plus pull-right"></i>
             </div>
@@ -211,4 +226,41 @@
             </div>
         </div>
     </div>
+    <!--create team finished-->
+
+    <!--create state-->
+    <div id="state-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="state-modal" style="padding-right: 0px !important; ">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="team-modal-label">Create Sate</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="create-state" method="post">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
+                            <div class="col-xs-10">
+                                <input name="Name" class="form-control" type="text" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-xs-2 col-form-label">Resolved State</label>
+                            <div class="col-xs-10">
+                                <select name="IsResolved" class="form-control">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="CreateState()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--create team finished-->
 </div>

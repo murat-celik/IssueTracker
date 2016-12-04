@@ -13,3 +13,11 @@ function CreateProject() {
         console.log(data);
     }, true, false);
 }
+
+function CreateState() {
+    ajax('/Backend/State/Create', $('#create-state').serialize(), function (data) {
+        $("#list-group-states").append('<li class="list-group-item"><a>' + data.Name + '</a></li>');
+        $("#state-modal").modal("hide");
+        console.log(data);
+    }, true, false);
+}
