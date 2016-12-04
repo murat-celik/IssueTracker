@@ -171,6 +171,7 @@
     <Content Include="bin\roslyn\vbc.exe.config" />
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="Areas\Backend\Views\Team\Details.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -189,9 +190,11 @@
     <Compile Include="AppCode\_IBaseEntity.cs" />
     <Compile Include="Areas\Backend\BackendAreaRegistration.cs" />
     <Compile Include="Areas\Backend\Controllers\ManagerController.cs" />
+    <Compile Include="Areas\Backend\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Backend\Controllers\TeamController.cs" />
     <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\IssueController.cs" />
+    <Compile Include="Models\TeamCollobrator.cs" />
     <Compile Include="UnitOfWork\IssueTrackerUnitOfWork.cs" />
     <Compile Include="UnitOfWork\_IUnitOfWork.cs" />
     <Compile Include="Repository\_IRepository.cs" />
@@ -245,7 +248,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Backend\Models\" />
     <Folder Include="Areas\Backend\Views\Default\" />
-    <Folder Include="Areas\Backend\Views\Team\" />
+    <Folder Include="Areas\Backend\Views\Project\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

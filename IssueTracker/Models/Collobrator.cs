@@ -13,9 +13,8 @@ namespace IssueTracker.Models
         [ForeignKey("UserID")]
         public User User { get; set; }
 
-        [NotMapped]
-        public List<Issue> Issues { get; set; }
-        [NotMapped]
-        public List<Comment> Comments { get; set; }
+
+        public virtual List<Issue> Issues { get; set; }
+        public virtual List<Comment> Comments { get; set; }
     }
 }
