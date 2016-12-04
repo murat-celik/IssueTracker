@@ -11,10 +11,11 @@ namespace IssueTracker.Repository
         void Insert(T Entity);
         void Update(T Entity);
 
-        void Delete(object EntityId);
+        void Delete(int EntityId);
         void Delete(T Entity);
 
-        T FindById(object EntityId);
+        T FindById(int EntityId);
+        T FindById(int EntityId, List<string> Includes = null);
         IQueryable<T> Select(Expression<Func<T, bool>> Filter = null, List<string> Includes = null);
     }
 }

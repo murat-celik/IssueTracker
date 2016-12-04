@@ -51,9 +51,23 @@ namespace IssueTracker.Repository
 
         }
 
-        public T FindById(object EntityId)
+        public T FindById(int EntityId)
         {
             return _DbSet.Find(EntityId);
+        }
+
+        public T FindById(int EntityId, List<string> Includes = null)
+        {
+            IQueryable<T> oQuery = this._DbSet;
+            if (Includes != null)
+            {
+                foreach (string item in Includes)
+                {
+                    oQuery = oQuery.Include(item);
+                }
+
+            }
+            return oQuery.Where(w => w.ID == EntityId).FirstOrDefault<T>();
         }
 
         public IQueryable<T> Select(Expression<Func<T, bool>> Filter = null, List<string> Includes = null)
@@ -77,7 +91,7 @@ namespace IssueTracker.Repository
             return oQuery;
         }
 
-        public void Delete(object EntityId)
+        public void Delete(int EntityId)
         {
             T Entity = _DbSet.Find(EntityId); // bu EntityId gerçekten Db de varmı ? 
             if (Entity != null)
