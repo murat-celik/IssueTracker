@@ -22,8 +22,10 @@
 
             <div id="projects" class="tab-pane panel-body">
                 <ul id="list-group-projects panel-body" class="list-group">
-                    <li class="list-group-item"><a>Accriss</a> </li>
-                    <li class="list-group-item"><a>Racih</a> </li>
+                    @foreach (var item in ViewData["Projects"] as List<IssueTracker.Models.Project>)
+                    {
+                        <li class="list-group-item"><a href="/Backend/Project/Details/@item.ID">@item.Name <span class="label label-default pull-right">@item.Team.Name</span></a></li>
+                    }
                 </ul>
                 <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#projects-modal"><i class="glyphicon glyphicon-plus"></i> Create</button>
             </div>

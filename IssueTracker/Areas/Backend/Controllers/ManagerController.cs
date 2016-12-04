@@ -15,6 +15,13 @@ namespace IssueTracker.Areas.Backend.Controllers
             List<Team> Teams = this.oIssueTrackerUnitOfWork.TeamRepository.Select().ToList<Team>();
             ViewData["Teams"] = Teams;
 
+            List<string> IncludesProjects = new List<string>();
+            IncludesProjects.Add("Team");
+
+            List<Project> Projects = this.oIssueTrackerUnitOfWork.ProjectRepository.Select(null, IncludesProjects).ToList<Project>();
+            ViewData["Projects"] = Projects;
+
+
             List<State> States = this.oIssueTrackerUnitOfWork.StateRepository.Select().ToList<State>();
             ViewData["States"] = States;
 
