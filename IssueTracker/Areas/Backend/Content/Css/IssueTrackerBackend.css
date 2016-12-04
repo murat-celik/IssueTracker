@@ -56,13 +56,21 @@ a {
     padding: 10px;
     background-color: #fff;
 }
+
+.btn {
+    border-radius: 0px !important;
+}
+
+.form-control {
+    border-radius: 0px !important;
+}
 /*Bootsrap Class Finished*/
 
 
 #displaySuccess {
     display: none;
     position: fixed;
-    padding-top:1px;
+    padding-top: 1px;
     height: 42px;
     background-color: #009052;
     text-align: center;
@@ -76,7 +84,7 @@ a {
 #displayFailed {
     display: none;
     position: fixed;
-    padding-top:1px;
+    padding-top: 1px;
     height: 42px;
     background-color: #bf1d1d;
     text-align: center;

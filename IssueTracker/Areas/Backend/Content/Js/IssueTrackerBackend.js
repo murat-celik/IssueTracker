@@ -32,3 +32,9 @@ function CreatePriority() {
         $("#priority-modal").modal("hide");
     }, true, false);
 }
+function CreateTag() {
+    ajax('/Backend/Tag/Create', $('#create-tag').serialize(), function (data) {
+        $("#list-group-tags").append('<li class="list-group-item"><a>' + data.Name + '</a></li>');
+        $("#tag-modal").modal("hide");
+    }, true, false);
+}
