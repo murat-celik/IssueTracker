@@ -1,0 +1,133 @@
+﻿<div id="modals" class="row">
+    <!--create team-->
+    <div id="team-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="team-modal" style="padding-right: 0px !important; ">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="team-modal-label">Create Team</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="manager-create-team" method="post">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
+                            <div class="col-xs-10">
+                                <input name="Name" class="form-control" type="text" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-xs-2 col-form-label">Description</label>
+                            <div class="col-xs-10">
+                                <textarea name="Description" class="form-control" type="text" placeholder="Description" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="managerCreateTeam()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--create team finished-->
+
+    <!--create state-->
+    <div id="state-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="state-modal" style="padding-right: 0px !important; ">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="team-modal-label">Create Sate</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="create-state" method="post">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
+                            <div class="col-xs-10">
+                                <input name="Name" class="form-control" type="text" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-xs-2 col-form-label">Resolved State</label>
+                            <div class="col-xs-10">
+                                <select name="IsResolved" class="form-control">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="CreateState()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--create state finished-->
+
+    <!--create type-->
+    <div id="type-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="type-modal" style="padding-right: 0px !important; ">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="team-modal-label">Create Type</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="create-type" method="post">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
+                            <div class="col-xs-10">
+                                <input name="Name" class="form-control" type="text" placeholder="Name">
+                                <span class="help-block">for example : Bug , Future ,Task </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="CreateType()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--create type finished-->
+
+    <!--create priority-->
+    <div id="priority-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="priority-modal" style="padding-right: 0px !important; ">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="priority-modal-label">Create Type</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="create-priority" method="post">
+                        <div class="form-group row">
+                            <label class="col-xs-2 col-form-label">Name</label>
+                            <div class="col-xs-10">
+                                <input name="Name" class="form-control" type="text" placeholder="Name">
+                                <span class="help-block">for example : Normal , Critical , Show Stopper, </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xs-2 col-form-label">Color</label>
+                            <div class="col-xs-10">
+                                <input name="Color" class="form-control" type="color" placeholder="Color">
+                                <span class="help-block">for example : #ff0000 , #00ff00, #0000ff, </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="CreatePriority()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--create priority finished-->
+</div>

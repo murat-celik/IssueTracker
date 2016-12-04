@@ -17,6 +17,7 @@ namespace IssueTracker.UnitOfWork
         private IssueTrackerRepository<Project> _projectRepository;
         private IssueTrackerRepository<State> _stateRepository;
         private IssueTrackerRepository<Models.Type> _typeRepository;
+        private IssueTrackerRepository<Priority> _priorityRepository;
 
         public IssueTrackerRepository<Team> TeamRepository
         {
@@ -55,6 +56,16 @@ namespace IssueTracker.UnitOfWork
                 if (_typeRepository == null)
                     _typeRepository = new IssueTrackerRepository<Models.Type>(oIssueTrackerContext);
                 return _typeRepository;
+            }
+        }
+
+        public IssueTrackerRepository<Priority> PriorityRepository
+        {
+            get
+            {
+                if (_priorityRepository == null)
+                    _priorityRepository = new IssueTrackerRepository<Priority>(oIssueTrackerContext);
+                return _priorityRepository;
             }
         }
 

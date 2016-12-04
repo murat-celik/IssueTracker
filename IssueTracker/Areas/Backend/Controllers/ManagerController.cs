@@ -14,11 +14,15 @@ namespace IssueTracker.Areas.Backend.Controllers
         {
             List<Team> Teams = this.oIssueTrackerUnitOfWork.TeamRepository.Select().ToList<Team>();
             ViewData["Teams"] = Teams;
+
             List<State> States = this.oIssueTrackerUnitOfWork.StateRepository.Select().ToList<State>();
             ViewData["States"] = States;
 
             List<Models.Type> Types = this.oIssueTrackerUnitOfWork.TypeRepository.Select().ToList<Models.Type>();
             ViewData["Types"] = Types;
+
+            List<Priority> Priorities = this.oIssueTrackerUnitOfWork.PriorityRepository.Select().ToList<Priority>();
+            ViewData["Priorities"] = Priorities;
 
             return View();
         }

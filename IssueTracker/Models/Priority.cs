@@ -11,5 +11,7 @@ namespace IssueTracker.Models
     {
         [Required, StringLength(128), Column(TypeName = "varchar")]
         public string Name { get; set; }
+        [StringLength(32), Column(TypeName = "varchar")]
+        public string Color { get; set; }
     }
 }
