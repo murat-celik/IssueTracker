@@ -21,3 +21,11 @@ function CreateState() {
         console.log(data);
     }, true, false);
 }
+
+function CreateType() {
+    ajax('/Backend/Type/Create', $('#create-type').serialize(), function (data) {
+        $("#list-group-types").append('<li class="list-group-item"><a>' + data.Name + '</a></li>');
+        $("#type-modal").modal("hide");
+        console.log(data);
+    }, true, false);
+}

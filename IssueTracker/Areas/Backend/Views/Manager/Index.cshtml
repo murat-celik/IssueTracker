@@ -9,28 +9,56 @@
                 <i class="glyphicon glyphicon-plus pull-right" data-toggle="modal" data-target="#team-modal"></i>
             </div>
             <div class="panel-body">
-                <ul id="list-group-teams"  class="list-group">
-                    @foreach (var item in ViewData["Teams"] as List<IssueTracker.Models.Team>)
-                    {
+                <ul id="list-group-teams" class="list-group">
+                    @foreach (var item in ViewData["Teams"] as List
+                    <IssueTracker.Models.Team>
+                        )
+                        {
                         <li class="list-group-item"><a href="/Backend/Team/Details/@item.ID">@item.Name</a></li>
-                    }
+                        }
                 </ul>
             </div>
         </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <span> States </span>
-                <i class="glyphicon glyphicon-plus pull-right" data-toggle="modal" data-target="#state-modal"></i>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#states">States</a> </li>
+            <li><a data-toggle="tab" href="#types">Types</a></li>
+            <li><a data-toggle="tab" href="#priority">Priority</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="states" class="tab-pane fade in active">
+                <div class="panel-body">
+                    <ul id="list-group-states" class="list-group">
+                        @foreach (var item in ViewData["States"] as List
+                        <IssueTracker.Models.State>
+                            )
+                            {
+                            <li class="list-group-item"><a>@item.Name</a> <label class="pull-right label  @{if (item.IsResolved == true) { Write(" label-success"); } else { Write("label-default"); } } ">Resolved</label> </li>
+                            }
+                    </ul>
+                    <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#state-modal"><i class="glyphicon glyphicon-plus"></i> Create</button>
+                </div>
+
             </div>
-            <div class="panel-body">
-                <ul id="list-group-states" class="list-group">
-                    @foreach (var item in ViewData["States"] as List<IssueTracker.Models.State>)
-                    {
-                        <li class="list-group-item"><a>@item.Name</a> <label class="pull-right label  @{if (item.IsResolved == true) { Write("label-success"); } else { Write("label-default"); } } ">Resolved</label> </li>
-                    }
-                </ul>
+
+            <div id="types" class="tab-pane">
+                <div class="panel-body">
+                    <ul id="list-group-types" class="list-group">
+                        @foreach (var item in ViewData["Types"] as List <IssueTracker.Models.Type>)
+                        {
+                           <li class="list-group-item"><a>@item.Name</a> </li>
+                        }
+                    </ul>
+                    <button class="btn btn-circle  btn-success btn-xs" data-toggle="modal" data-target="#type-modal"><i class="glyphicon glyphicon-plus"></i> Create</button>
+                </div>
             </div>
+
+            <div id="priority" class="tab-pane">
+                asasd
+            </div>
+
+
         </div>
+
 
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -58,7 +86,6 @@
             </div>
         </div>
 
-        
     </div>
     <div class="col-lg-6">
         <div class="panel panel-default">
@@ -194,7 +221,7 @@
     </div>
 </div>
 
-<div id="modals"class="row">
+<div id="modals" class="row">
     <!--create team-->
     <div id="team-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="team-modal" style="padding-right: 0px !important; ">
         <div class="modal-dialog" role="document">
@@ -227,7 +254,6 @@
         </div>
     </div>
     <!--create team finished-->
-
     <!--create state-->
     <div id="state-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="state-modal" style="padding-right: 0px !important; ">
         <div class="modal-dialog" role="document">
@@ -258,6 +284,34 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary btn-sm" onclick="CreateState()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--create team finished-->
+
+    <!--create type-->
+    <div id="type-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="type-modal" style="padding-right: 0px !important; ">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="team-modal-label">Create Type</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="create-type" method="post">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
+                            <div class="col-xs-10">
+                                <input name="Name" class="form-control" type="text" placeholder="Name">
+                                <span class="help-block">for example : Bug , Future ,Task </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="CreateType()">Save</button>
                 </div>
             </div>
         </div>

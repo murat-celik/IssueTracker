@@ -16,6 +16,10 @@ namespace IssueTracker.Areas.Backend.Controllers
             ViewData["Teams"] = Teams;
             List<State> States = this.oIssueTrackerUnitOfWork.StateRepository.Select().ToList<State>();
             ViewData["States"] = States;
+
+            List<Models.Type> Types = this.oIssueTrackerUnitOfWork.TypeRepository.Select().ToList<Models.Type>();
+            ViewData["Types"] = Types;
+
             return View();
         }
 

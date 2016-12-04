@@ -194,6 +194,7 @@
     <Compile Include="Areas\Backend\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Backend\Controllers\StateController.cs" />
     <Compile Include="Areas\Backend\Controllers\TeamController.cs" />
+    <Compile Include="Areas\Backend\Controllers\TypeController.cs" />
     <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="Models\TeamCollobrator.cs" />
@@ -251,6 +252,7 @@
     <Folder Include="Areas\Backend\Models\" />
     <Folder Include="Areas\Backend\Views\Default\" />
     <Folder Include="Areas\Backend\Views\State\" />
+    <Folder Include="Areas\Backend\Views\Type\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
