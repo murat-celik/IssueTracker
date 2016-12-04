@@ -7,7 +7,7 @@ using System.Web;
 
 namespace IssueTracker.Models
 {
-    public class User 
+    public class User
     {
         [Key]
         public int ID { get; set; }
@@ -15,5 +15,11 @@ namespace IssueTracker.Models
         public string Firstname { get; set; }
         [Required, StringLength(64), Column(TypeName = "varchar")]
         public string Lastname { get; set; }
+
+        public string Fullname()
+        {
+            return this.Firstname + " " + this.Lastname;
+        }
+
     }
 }

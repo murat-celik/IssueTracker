@@ -172,6 +172,7 @@
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="Areas\Backend\Views\Team\Details.cshtml" />
+    <Content Include="Areas\Backend\Views\Project\Details.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -249,7 +250,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Backend\Models\" />
     <Folder Include="Areas\Backend\Views\Default\" />
-    <Folder Include="Areas\Backend\Views\Project\" />
     <Folder Include="Areas\Backend\Views\State\" />
   </ItemGroup>
   <PropertyGroup>

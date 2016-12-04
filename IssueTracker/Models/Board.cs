@@ -20,7 +20,7 @@ namespace IssueTracker.Models
 
         [ForeignKey("ProjectID")]
         public Project Project { get; set; }
-        [NotMapped]
-        public List<Column> Columns { get; set; }
+       
+        public virtual List<Column> Columns { get; set; }
     }
 }

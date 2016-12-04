@@ -9,7 +9,11 @@ namespace IssueTracker.Models
 {
     public class Tag : AppCode.BaseEntity
     {
+        public int ProjectID { get; set; }
         [Required, StringLength(128), Column(TypeName = "varchar")]
         public string Name { get; set; }
+
+        [ForeignKey("ProjectID")]
+        public Project Project { get; set; }
     }
 }

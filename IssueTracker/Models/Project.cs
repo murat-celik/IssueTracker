@@ -15,14 +15,11 @@ namespace IssueTracker.Models
         [Column(TypeName = "varchar(MAX)")]
         public string Description { get; set; }
 
-        /**/
         [ForeignKey("TeamID")]
         public Team Team { get; set; }
-        [NotMapped]
-        public List<Board> Boards { get; set; }
-        [NotMapped]
-        public List<Issue> Issues { get; set; }
-        [NotMapped]
-        public List<Tag> Tags { get; set; }
+
+        public virtual List<Board> Boards { get; set; }
+        public virtual List<Issue> Issues { get; set; }
+        public virtual List<Tag> Tags { get; set; }
 }
 }

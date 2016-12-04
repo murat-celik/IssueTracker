@@ -90,6 +90,25 @@ namespace IssueTracker.UnitOfWork
             return ErrorMessage;
         }
 
+        public string GetValidationErrors(System.Web.Mvc.ModelStateDictionary ModelState)
+        {
+            string ErrorMessage = "";
+            if (ModelState.Values.Count >0)
+            {
+                ErrorMessage = "<ul>";
+                foreach (System.Web.Mvc.ModelState modelState in ModelState.Values)
+                {
+
+                    foreach (System.Web.Mvc.ModelError error in modelState.Errors)
+                    {
+                        ErrorMessage = ErrorMessage + "<li>" + error.ErrorMessage + " </li> ";
+                    }
+                }
+                ErrorMessage = ErrorMessage + "</ul>";
+            }
+            return ErrorMessage;
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (!this._disposed)

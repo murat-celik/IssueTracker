@@ -39,19 +39,36 @@ namespace IssueTracker.Areas.Backend.Controllers
                     return RedirectToAction("Index");
                 }
 
-                throw new Exception(oIssueTrackerUnitOfWork.GetValidationErrors());
+                throw new Exception(oIssueTrackerUnitOfWork.GetValidationErrors(ViewData.ModelState));
             }
             catch (Exception ex)
             {
                 if (Request.Form.Get("ajax") != null)
                 {
                     this.oResultData.Status = AppCode.StatusEnum.Pasive;
-                    this.oResultData.Message = oIssueTrackerUnitOfWork.GetValidationErrors();
+                    this.oResultData.Message = oIssueTrackerUnitOfWork.GetValidationErrors(ViewData.ModelState);
                     return Json(oResultData);
                 }
 
                 return View();
             }
+        }
+
+        // GET: Backend/Team/Details/5
+        public ActionResult Details(int id)
+        {
+            List<string> Includes = new List<string>();
+            Includes.Add("UserCreated");
+            Includes.Add("UserUpdated");
+            Includes.Add("Team");
+            Includes.Add("Tags");
+            Includes.Add("Boards");
+            Includes.Add("Boards.Columns");
+         
+
+            Project Model = this.oIssueTrackerUnitOfWork.ProjectRepository.FindById(id, Includes);
+
+            return View(Model);
         }
     }
 }
