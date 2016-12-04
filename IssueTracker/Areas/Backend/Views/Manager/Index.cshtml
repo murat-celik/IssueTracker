@@ -12,7 +12,7 @@
                 <ul id="list-group-teams"  class="list-group">
                     @foreach (var item in ViewData["Teams"] as List<IssueTracker.Models.Team>)
                     {
-                        <li class="list-group-item"><a href="Team/Detail/@item.ID">@item.Name</a></li>
+                        <li class="list-group-item"><a href="Team/Details/@item.ID">@item.Name</a></li>
                     }
                 </ul>
             </div>
