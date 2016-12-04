@@ -12,6 +12,8 @@ namespace IssueTracker.Areas.Backend.Controllers
         // GET: Backend/Home
         public ActionResult Index()
         {
+            List<Team> oTeams = this.oIssueTrackerUnitOfWork.TeamRepository.Select().ToList<Team>();
+            ViewData["Teams"] = oTeams;
             return View();
         }
 
@@ -20,16 +22,7 @@ namespace IssueTracker.Areas.Backend.Controllers
         {
             try
             {
-                oTeam.Name = Request.Form.Get("Name");
-                oTeam.Description = null;
-                if (ModelState.IsValidField("Description"))
-                {
-
-                }
-                // oTeam.Description = collection.Get("Description");
-
                 this.oIssueTrackerUnitOfWork.TeamRepository.Save(oTeam);
-               
 
                 if (this.oIssueTrackerUnitOfWork.Save())
                 {

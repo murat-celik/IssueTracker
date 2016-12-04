@@ -9,13 +9,11 @@
                 <i class="glyphicon glyphicon-plus pull-right" data-toggle="modal" data-target="#team-modal"></i>
             </div>
             <div class="panel-body">
-                <button onclick="displaySuccess()">Display Success</button>
-                <button onclick="displayFailed()">Display Failed</button>
-                <button onclick="displayMessage('My Message')">Display Message</button>
-                <button onclick="startLoading('My Message')">Start Loading</button>
-                <ul>
-                    <li><a>Teams1</a></li>
-                    <li><a>Teams2</a></li>
+                <ul id="list-group-teams"  class="list-group">
+                    @foreach (var item in ViewData["Teams"] as List<IssueTracker.Models.Team>)
+                    {
+                        <li class="list-group-item"><a href="Team/Detail/@item.ID">@item.Name</a></li>
+                    }
                 </ul>
             </div>
         </div>
@@ -32,6 +30,20 @@
             </div>
         </div>
 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span> Buttons </span>
+                <i class="glyphicon glyphicon-plus pull-right"></i>
+            </div>
+            <div class="panel-body">
+                <button onclick="displaySuccess()">Display Success</button>
+                <button onclick="displayFailed()">Display Failed</button>
+                <button onclick="displayMessage('My Message')">Display Message</button>
+                <button onclick="startLoading('My Message')">Start Loading</button>
+            </div>
+        </div>
+
+        
     </div>
     <div class="col-lg-6">
         <div class="panel panel-default">
@@ -187,7 +199,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-xs-2 col-form-label">Description</label>
                             <div class="col-xs-10">
-                                <input name="Description" class="form-control" type="text" placeholder="Description">
+                                <textarea name="Description" class="form-control" type="text" placeholder="Description" rows="3"></textarea>
                             </div>
                         </div>
                     </form>

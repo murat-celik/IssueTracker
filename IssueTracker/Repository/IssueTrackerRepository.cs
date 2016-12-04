@@ -59,9 +59,13 @@ namespace IssueTracker.Repository
         public IQueryable<T> Select(Expression<Func<T, bool>> Filter = null, List<string> Includes = null)
         {
             IQueryable<T> oQuery = this._DbSet;
-            foreach (string item in Includes)
+            if (Includes!=null)
             {
-                oQuery = oQuery.Include(item);
+                foreach (string item in Includes)
+                {
+                    oQuery = oQuery.Include(item);
+                }
+
             }
 
             if (Filter != null)
