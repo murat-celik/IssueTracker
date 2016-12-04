@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using IssueTracker.Models;
 
 namespace IssueTracker.Areas.Backend.Controllers
 {
-    public class TeamController : Controller
+    public class TeamController : AppCode.BaseController
     {
         // GET: Backend/Team
         public ActionResult Index()
@@ -17,7 +18,15 @@ namespace IssueTracker.Areas.Backend.Controllers
         // GET: Backend/Team/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            List<string> Includes = new  List<string>();
+            Includes.Add("Projects");
+            Includes.Add("TeamCollobrators");
+            Includes.Add("TeamCollobrators.Collobrator");
+            Includes.Add("TeamCollobrators.Collobrator.User");
+
+            Team oTeam = this.oIssueTrackerUnitOfWork.TeamRepository.FindById(id, Includes);
+
+            return View(oTeam);
         }
 
         // GET: Backend/Team/Create

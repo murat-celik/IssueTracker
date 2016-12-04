@@ -15,6 +15,8 @@ namespace IssueTracker.UnitOfWork
 
         private IssueTrackerRepository<Team> _teamRepository;
 
+        private IssueTrackerRepository<Project> _projectRepository;
+
         public IssueTrackerRepository<Team> TeamRepository
         {
             get
@@ -22,6 +24,16 @@ namespace IssueTracker.UnitOfWork
                 if (_teamRepository == null)
                     _teamRepository = new IssueTrackerRepository<Team>(oIssueTrackerContext);
                 return _teamRepository;
+            }
+        }
+
+        public IssueTrackerRepository<Project> ProjectRepository
+        {
+            get
+            {
+                if (_projectRepository == null)
+                    _projectRepository = new IssueTrackerRepository<Project>(oIssueTrackerContext);
+                return _projectRepository;
             }
         }
 

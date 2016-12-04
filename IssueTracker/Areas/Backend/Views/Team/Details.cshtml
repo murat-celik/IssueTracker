@@ -1,0 +1,76 @@
+﻿@model IssueTracker.Models.Team
+
+
+<h4 style="border-bottom:1px solid #ddd; padding-bottom:3px;">
+    @Model.Name
+</h4>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span> Project</span>
+                <i class="glyphicon glyphicon-plus pull-right" data-toggle="modal" data-target="#project-modal"></i>
+            </div>
+            <div class="panel-body">
+                <ul id="list-group-projects" class="list-group">
+                    @foreach (var item in Model.Projects)
+                    {
+                        <li class="list-group-item"><a href="/Backend/Project/Details/@item.ID">@item.Name</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span> Collobrator</span>
+            </div>
+            <div class="panel-body">
+                <ul id="list-group-teams" class="list-group">
+                    @foreach (var item in Model.TeamCollobrators)
+                    {
+                        <li class="list-group-item"><a href="/Project/Details/@item.ID">@item.Collobrator.User.Firstname</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modals" class="row">
+    <!--create team-->
+    <div id="project-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="project-modal" style="padding-right: 0px !important; ">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="team-modal-label">Create Project</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="create-project" method="post">
+                        <input name="TeamID" type="hidden" placeholder="Name" value="@Model.ID">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
+                            <div class="col-xs-10">
+                                <input name="Name" class="form-control" type="text" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-xs-2 col-form-label">Description</label>
+                            <div class="col-xs-10">
+                                <textarea name="Description" class="form-control" type="text" placeholder="Description" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="CreateProject()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
