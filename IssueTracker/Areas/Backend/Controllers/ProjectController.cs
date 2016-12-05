@@ -57,16 +57,9 @@ namespace IssueTracker.Areas.Backend.Controllers
         // GET: Backend/Team/Details/5
         public ActionResult Details(int id)
         {
-            List<string> Includes = new List<string>();
-            Includes.Add("UserCreated");
-            Includes.Add("UserUpdated");
-            Includes.Add("Team");
-            Includes.Add("Tags");
-            Includes.Add("Boards");
-            Includes.Add("Boards.Columns");
-         
+            Project Model = this.oIssueTrackerUnitOfWork.ProjectRepository.FindById(id, "UserCreated", "UserUpdated", "Team", "Tags", "Boards", "Boards.Columns");
 
-            Project Model = this.oIssueTrackerUnitOfWork.ProjectRepository.FindById(id, Includes);
+            ViewData["States"] = this.oIssueTrackerUnitOfWork.StateRepository.Select().ToList<State>();
 
             return View(Model);
         }

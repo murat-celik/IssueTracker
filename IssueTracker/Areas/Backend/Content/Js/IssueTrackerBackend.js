@@ -32,9 +32,24 @@ function CreatePriority() {
         $("#priority-modal").modal("hide");
     }, true, false);
 }
+
 function CreateTag() {
     ajax('/Backend/Tag/Create', $('#create-tag').serialize(), function (data) {
         $("#list-group-tags").append('<li class="list-group-item"><a>' + data.Name + '</a></li>');
         $("#tag-modal").modal("hide");
     }, true, false);
+}
+
+function CreateBoard() {
+
+    ajax('/Backend/Board/Create', $('#create-board').serialize(), function (data) {
+        $("#list-group-boards").append('<li class="list-group-item"><a>' + data.Name + '</a></li>');
+        $("#list-group-coloumn > li").each(function (index, object) {
+            ajax('/Backend/Column/Create', { BoardID: data.ID, StateID: $(this).data("state-id"), SortIndex: index }, function (Columndata) {
+             
+            }, true, false);
+        });
+    }, true, false);
+
+    $("#board-modal").modal("hide");
 }

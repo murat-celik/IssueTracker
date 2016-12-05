@@ -27,7 +27,7 @@ namespace IssueTracker.Controllers
 
         public ActionResult me()
         {
-            var Teams = this.oIssueTrackerUnitOfWork.TeamRepository.Select(null, new List<string> { "UserUpdated", "UserCreated" }).ToList();
+            var Teams = this.oIssueTrackerUnitOfWork.TeamRepository.Select(null, "UserUpdated", "UserCreated").ToList();
 
             return Json(Teams);
         }

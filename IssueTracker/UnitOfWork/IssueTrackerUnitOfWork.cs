@@ -19,6 +19,8 @@ namespace IssueTracker.UnitOfWork
         private IssueTrackerRepository<Models.Type> _typeRepository;
         private IssueTrackerRepository<Priority> _priorityRepository;
         private IssueTrackerRepository<Tag> _tagRepository;
+        private IssueTrackerRepository<Board> _boardRepository;
+        private IssueTrackerRepository<Column> _columnRepository;
 
         public IssueTrackerRepository<Team> TeamRepository
         {
@@ -77,6 +79,26 @@ namespace IssueTracker.UnitOfWork
                 if (_tagRepository == null)
                     _tagRepository = new IssueTrackerRepository<Tag>(oIssueTrackerContext);
                 return _tagRepository;
+            }
+        }
+
+        public IssueTrackerRepository<Board> BoardRepository
+        {
+            get
+            {
+                if (_boardRepository == null)
+                    _boardRepository = new IssueTrackerRepository<Board>(oIssueTrackerContext);
+                return _boardRepository;
+            }
+        }
+
+        public IssueTrackerRepository<Column> ColumnRepository
+        {
+            get
+            {
+                if (_columnRepository == null)
+                    _columnRepository = new IssueTrackerRepository<Column>(oIssueTrackerContext);
+                return _columnRepository;
             }
         }
 

@@ -15,7 +15,7 @@ namespace IssueTracker.Repository
         void Delete(T Entity);
 
         T FindById(int EntityId);
-        T FindById(int EntityId, List<string> Includes = null);
-        IQueryable<T> Select(Expression<Func<T, bool>> Filter = null, List<string> Includes = null);
+        T FindById(int EntityId, params string[] Includes);
+        IQueryable<T> Select(Expression<Func<T, bool>> Filter = null, params string[] Includes);
     }
 }

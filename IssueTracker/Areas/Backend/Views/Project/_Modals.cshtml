@@ -1,6 +1,86 @@
 ﻿@model IssueTracker.Models.Project
 
 <div id="modals" class="row">
+    <!--create board-->
+    <div id="board-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="board-modal" style="padding-right: 0px !important; ">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="team-modal-label">Create Board</h4>
+                </div>
+                <div class="modal-body" style="overflow:auto;">
+
+                    <div class="col-lg-6">
+                        <form id="create-board" method="post">
+                            <input name="ProjectID" type="hidden" value="@Model.ID">
+                            <div class="form-group row">
+                                <label class="col-form-label">Name</label>
+                                <div class="">
+                                    <input id="Name" name="Name" class="form-control" type="text" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-form-label">Description</label>
+                                <div class="">
+                                    <textarea id="Description" name="Description" class="form-control" type="text" placeholder="Description" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group row">
+                                        <label class="col-form-label">Date Start</label>
+                                        <div class="">
+                                            <input id="DateTimeStart" name="DateTimeStart" class="form-control" type="date" placeholder="Date Start">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 ">
+                                    <div class="form-group row">
+                                        <label class="col-form-label">Date Finish</label>
+                                        <div class="">
+                                            <input id="DateTimeFinish" name="DateTimeFinish" class="form-control" type="date" placeholder="Date Finish">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h4>States</h4>
+                                <ul id="list-group-states" class="list-group connectedSortable" style="min-height:100px; cursor:move; border:1px dotted #ddd;">
+                                    @foreach (var item in ViewData["States"] as List<IssueTracker.Models.State>)
+                                    {
+                                        <li class="list-group-item" data-state-id="@item.ID" >@item.Name <button class="btn btn-xs btn-success glyphicon glyphicon-plus pull-right"></button></li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>Board Column</h4>
+                                <ul id="list-group-coloumn" class="list-group connectedSortable" style="min-height:100px; cursor:move;border:1px dotted #ddd;">
+
+                                </ul>
+                            </div>
+                            <script>
+                                $(function () {
+                                    $("#list-group-states, #list-group-coloumn").sortable({
+                                        connectWith: ".connectedSortable"
+                                    }).disableSelection();
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="CreateBoard()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--create board finished-->
     <!--create tag-->
     <div id="tag-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="tag-modal" style="padding-right: 0px !important; ">
         <div class="modal-dialog" role="document">

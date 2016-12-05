@@ -18,13 +18,7 @@ namespace IssueTracker.Areas.Backend.Controllers
         // GET: Backend/Team/Details/5
         public ActionResult Details(int id)
         {
-            List<string> Includes = new  List<string>();
-            Includes.Add("Projects");
-            Includes.Add("TeamCollobrators");
-            Includes.Add("TeamCollobrators.Collobrator");
-            Includes.Add("TeamCollobrators.Collobrator.User");
-
-            Team oTeam = this.oIssueTrackerUnitOfWork.TeamRepository.FindById(id, Includes);
+            Team oTeam = this.oIssueTrackerUnitOfWork.TeamRepository.FindById(id, "Projects", "TeamCollobrators", "TeamCollobrators.Collobrator", "TeamCollobrators.Collobrator.User");
 
             return View(oTeam);
         }

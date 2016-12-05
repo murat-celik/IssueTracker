@@ -8,6 +8,7 @@ namespace IssueTracker.Models
 {
     public class Column : AppCode.BaseEntity
     {
+        public int? SortIndex { get; set; }
         public int? BoardID { get; set; }
         public int? StateID { get; set; }
 
@@ -16,7 +17,6 @@ namespace IssueTracker.Models
         [ForeignKey("StateID")]
         public State State { get; set; }
 
-        [NotMapped]
-        public List<Issue> Issues { get; set; }
+        public virtual List<Issue> Issues { get; set; }
     }
 }

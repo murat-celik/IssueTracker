@@ -12,24 +12,11 @@ namespace IssueTracker.Areas.Backend.Controllers
         // GET: Backend/Home
         public ActionResult Index()
         {
-            List<Team> Teams = this.oIssueTrackerUnitOfWork.TeamRepository.Select().ToList<Team>();
-            ViewData["Teams"] = Teams;
-
-            List<string> IncludesProjects = new List<string>();
-            IncludesProjects.Add("Team");
-
-            List<Project> Projects = this.oIssueTrackerUnitOfWork.ProjectRepository.Select(null, IncludesProjects).ToList<Project>();
-            ViewData["Projects"] = Projects;
-
-
-            List<State> States = this.oIssueTrackerUnitOfWork.StateRepository.Select().ToList<State>();
-            ViewData["States"] = States;
-
-            List<Models.Type> Types = this.oIssueTrackerUnitOfWork.TypeRepository.Select().ToList<Models.Type>();
-            ViewData["Types"] = Types;
-
-            List<Priority> Priorities = this.oIssueTrackerUnitOfWork.PriorityRepository.Select().ToList<Priority>();
-            ViewData["Priorities"] = Priorities;
+            ViewData["Teams"] = this.oIssueTrackerUnitOfWork.TeamRepository.Select().ToList<Team>();
+            ViewData["Projects"] = this.oIssueTrackerUnitOfWork.ProjectRepository.Select(null, "Team").ToList<Project>();
+            ViewData["States"] = this.oIssueTrackerUnitOfWork.StateRepository.Select().ToList<State>();
+            ViewData["Types"] = this.oIssueTrackerUnitOfWork.TypeRepository.Select().ToList<Models.Type>();
+            ViewData["Priorities"] = this.oIssueTrackerUnitOfWork.PriorityRepository.Select().ToList<Priority>();
 
             return View();
         }

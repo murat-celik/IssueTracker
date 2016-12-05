@@ -56,10 +56,10 @@ namespace IssueTracker.Repository
             return _DbSet.Find(EntityId);
         }
 
-        public T FindById(int EntityId, List<string> Includes = null)
+        public T FindById(int EntityId, params string[] Includes)
         {
             IQueryable<T> oQuery = this._DbSet;
-            if (Includes != null)
+            if (Includes.Length > 0)
             {
                 foreach (string item in Includes)
                 {
@@ -70,10 +70,10 @@ namespace IssueTracker.Repository
             return oQuery.Where(w => w.ID == EntityId).FirstOrDefault<T>();
         }
 
-        public IQueryable<T> Select(Expression<Func<T, bool>> Filter = null, List<string> Includes = null)
+        public IQueryable<T> Select(Expression<Func<T, bool>> Filter = null, params string[] Includes)
         {
             IQueryable<T> oQuery = this._DbSet;
-            if (Includes!=null)
+            if (Includes.Length > 0)
             {
                 foreach (string item in Includes)
                 {

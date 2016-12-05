@@ -41,6 +41,7 @@
                         <li class="list-group-item"><a href="#">@item.Name</a></li>
                     }
                 </ul>
+                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#board-modal"><i class="glyphicon glyphicon-plus"></i> Create</button>
             </div>
             <div id="tags" class="tab-pane panel-body">
                 <ul id="list-group-tags" class="list-group">
@@ -98,4 +99,6 @@
 </div>
 
 
-@Html.Partial("~/Areas/Backend/Views/Project/_Modals.cshtml",Model)
+@Html.Partial("~/Areas/Backend/Views/Project/_Modals.cshtml", Model)
+
+
