@@ -42,5 +42,17 @@ namespace IssueTracker.Areas.Backend.Controllers
 
             }
         }
+
+        // GET: Backend/Team/Details/5
+        public ActionResult Details(int id)
+        {
+            Board model = this.oIssueTrackerUnitOfWork.BoardRepository.FindById(id, "Project", "Project.Team", "Columns", "Columns.State", "Columns.Issues", "Project.Team.TeamCollobrators.Collobrator.User");
+          
+
+            ViewData["Types"] = this.oIssueTrackerUnitOfWork.TypeRepository.Select().ToList<Models.Type>();
+            ViewData["Priorities"] = this.oIssueTrackerUnitOfWork.PriorityRepository.Select().ToList<Priority>();
+
+            return View(model);
+        }
     }
 }

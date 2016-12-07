@@ -22,5 +22,6 @@ namespace IssueTracker.Models
         public Project Project { get; set; }
        
         public virtual List<Column> Columns { get; set; }
+        public virtual List<Issue> Issues { get; set; }
     }
 }

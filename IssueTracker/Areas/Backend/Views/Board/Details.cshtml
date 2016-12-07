@@ -1,0 +1,175 @@
+﻿@model IssueTracker.Models.Board
+
+<style>
+    .sortable-td > .panel {
+        cursor: move;
+    }
+
+    .ui-sortable-helper {
+        transform: scale(0.1, 0.6);
+        border: 1px solid #0094ff;
+    }
+</style>
+<script>
+    oldParent = null;
+    $(function () {
+        $(".sortable-td").sortable({
+            connectWith: ".connectedSortable",
+            start: function (event, ui) {
+                // $(ui.item[0]).parent().css('background-color', '#444');
+                oldParent = $(ui.item[0]).parent();
+                console.log(oldParent);
+                //console.log(ui.item[0].innerText);
+            },
+            stop: function (event, ui) {
+                //console.log(ui.item[0].innerText);
+            }
+        }).disableSelection();
+    });
+</script>
+
+<div class="row">
+    <div class="col-lg-6">
+        <h4>@Model.Project.Name</h4>
+    </div>
+    <div class="col-lg-5">
+        @Model.Description
+    </div>
+    <div class="col-lg-1">
+        <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#issue-modal"><i class="glyphicon glyphicon-plus"></i> Create Issue</button>
+    </div>
+</div>
+
+<div class="row">
+    <div id="displaySuccess" style="display:none; position:fixed; height:42px; background-color:#009052; text-align: center; left:0px; right:0px; top:0px; z-index:1000000000; color:#ffffff;">
+        <h4 style="">Successful..</h4>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        @foreach (var item in Model.Columns)
+                        {
+                            <td data-column-id="@item.ID">@item.State.Name <br /> @item.ID</td>
+                        }
+                    </tr>
+                </thead>
+                <tr>
+                    @foreach (var Column in Model.Columns)
+                    {
+                        <td class="sortable-td connectedSortable">
+                            @foreach (var Issue in Column.Issues)
+                            {
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">@Issue.Name</div>
+                                    <div class="panel-body">
+                                        Panel content
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                    }
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="issue-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="issue-modal" style="padding-right: 0px !important; ">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="team-modal-label">Create Board</h4>
+            </div>
+            <div class="modal-body" style="overflow:auto;">
+
+                <div class="col-lg-6">
+                    <form id="create-board" method="post">
+                        <input name="BoardID" type="hidden" value="@Model.ID">
+                        <input name="ProjectID" type="hidden" value="@Model.ProjectID">
+                        <div class="form-group row">
+                            <label class="col-form-label">Name</label>
+                            <div class="">
+                                <input id="Name" name="Name" class="form-control" type="text" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label">Description</label>
+                            <div class="">
+                                <textarea id="Description" name="Description" class="form-control" type="text" placeholder="Description" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6">
+
+                    <div class="col-lg-6">
+                        <div class="form-group row">
+                            <label class="col-form-label">Collobrator</label>
+                            <div class="">
+                                <select id="CollobratorID" name="ColumnID" class="form-control">
+                                    <option value=""></option>
+                                    @foreach (var item in Model.Project.Team.TeamCollobrators)
+                                    {
+                                        <option value="@item.CollobratorID">@item.Collobrator.User.Fullname()</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label">States</label>
+                            <div class="">
+                                <select id="TypeID" name="ColumnID" class="form-control">
+                                    <option value=""></option>
+                                    @foreach (var item in ViewData["Types"] as List<IssueTracker.Models.Type>)
+                                    {
+
+                                        <option value="@item.ID">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group row">
+                            <label class="col-form-label">Priorities</label>
+                            <div class="">
+                                <select id="PriorityID" name="ColumnID" class="form-control">
+                                    <option value=""></option>
+                                    @foreach (var item in ViewData["Priorities"] as List<IssueTracker.Models.Priority>)
+                                    {
+                                        <option value="@item.ID">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label">States</label>
+                            <div class="">
+                                <select id="ColumnID" name="ColumnID" class="form-control">
+                                    <option value=""></option>
+                                    @foreach (var item in Model.Columns)
+                                    {
+                                        <option value="@item.ID">@item.State.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="CreateBoard()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+

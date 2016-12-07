@@ -43,7 +43,7 @@ function CreateTag() {
 function CreateBoard() {
 
     ajax('/Backend/Board/Create', $('#create-board').serialize(), function (data) {
-        $("#list-group-boards").append('<li class="list-group-item"><a>' + data.Name + '</a></li>');
+        $("#list-group-boards").append('<li class="list-group-item"><a href="Backend/Board/Details/'+data.ID+'">' + data.Name + '</a></li>');
         $("#list-group-coloumn > li").each(function (index, object) {
             ajax('/Backend/Column/Create', { BoardID: data.ID, StateID: $(this).data("state-id"), SortIndex: index }, function (Columndata) {
              

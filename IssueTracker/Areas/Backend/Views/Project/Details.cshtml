@@ -38,7 +38,7 @@
                 <ul id="list-group-boards" class="list-group">
                     @foreach (var item in Model.Boards)
                     {
-                        <li class="list-group-item"><a href="#">@item.Name</a></li>
+                        <li class="list-group-item"><a href="/Backend/Board/Details/@item.ID">@item.Name</a></li>
                     }
                 </ul>
                 <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#board-modal"><i class="glyphicon glyphicon-plus"></i> Create</button>

@@ -175,6 +175,7 @@
     <Content Include="Areas\Backend\Views\Project\Details.cshtml" />
     <Content Include="Areas\Backend\Views\Manager\_Modals.cshtml" />
     <Content Include="Areas\Backend\Views\Project\_Modals.cshtml" />
+    <Content Include="Areas\Backend\Views\Board\Details.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -255,7 +256,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Backend\Views\Board\" />
     <Folder Include="Areas\Backend\Views\Column\" />
     <Folder Include="Areas\Backend\Views\Default\" />
     <Folder Include="Areas\Backend\Views\Priority\" />
