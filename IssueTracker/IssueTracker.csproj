@@ -195,6 +195,7 @@
     <Compile Include="Areas\Backend\BackendAreaRegistration.cs" />
     <Compile Include="Areas\Backend\Controllers\BoardController.cs" />
     <Compile Include="Areas\Backend\Controllers\ColumnController.cs" />
+    <Compile Include="Areas\Backend\Controllers\IssueController.cs" />
     <Compile Include="Areas\Backend\Controllers\ManagerController.cs" />
     <Compile Include="Areas\Backend\Controllers\PriorityController.cs" />
     <Compile Include="Areas\Backend\Controllers\ProjectController.cs" />
@@ -258,6 +259,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Backend\Views\Column\" />
     <Folder Include="Areas\Backend\Views\Default\" />
+    <Folder Include="Areas\Backend\Views\Issue\" />
     <Folder Include="Areas\Backend\Views\Priority\" />
     <Folder Include="Areas\Backend\Views\State\" />
     <Folder Include="Areas\Backend\Views\Tag\" />

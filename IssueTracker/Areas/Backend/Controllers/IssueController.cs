@@ -7,28 +7,27 @@ using IssueTracker.Models;
 
 namespace IssueTracker.Areas.Backend.Controllers
 {
-    public class BoardController : AppCode.BaseController
+    public class IssueController : AppCode.BaseController
     {
-        // GET: Backend/Board
+        // GET: Backend/Issue
         public ActionResult Index()
         {
             return View();
         }
 
-        // POST: Backend/Board/Create
+        // POST: Backend/Issue/Create
         [HttpPost]
-        public ActionResult Create(Board model)
+        public ActionResult Create(Issue model)
         {
-
             try
             {
-                this.oIssueTrackerUnitOfWork.BoardRepository.Save(model);
+                this.oIssueTrackerUnitOfWork.IssueRepository.Save(model);
 
                 if (this.oIssueTrackerUnitOfWork.Save())
                 {
                     this.oResultData.Status = AppCode.StatusEnum.Active;
                     this.oResultData.Data = model;
-                    this.oResultData.Message = "Board Create Successful.";
+                    this.oResultData.Message = "Issue Create Successful.";
                     return Json(oResultData);
                 }
 
@@ -43,16 +42,5 @@ namespace IssueTracker.Areas.Backend.Controllers
             }
         }
 
-        // GET: Backend/Team/Details/5
-        public ActionResult Details(int id)
-        {
-            Board model = this.oIssueTrackerUnitOfWork.BoardRepository.FindById(id, "Project", "Project.Team", "Columns", "Columns.State", "Columns.Issues", "Columns.Issues.IssueTags.Tag", "Project.Team.TeamCollobrators.Collobrator.User");
-          
-
-            ViewData["Types"] = this.oIssueTrackerUnitOfWork.TypeRepository.Select().ToList<Models.Type>();
-            ViewData["Priorities"] = this.oIssueTrackerUnitOfWork.PriorityRepository.Select().ToList<Priority>();
-
-            return View(model);
-        }
     }
 }

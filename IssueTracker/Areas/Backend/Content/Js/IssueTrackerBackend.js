@@ -28,7 +28,7 @@ function CreateType() {
 
 function CreatePriority() {
     ajax('/Backend/Priority/Create', $('#create-priority').serialize(), function (data) {
-        $("#list-group-priorities").append('<li class="list-group-item"><a>' + data.Name + '</a> <label class="pull-right label" style="background-color:'+data.Color+'">Color</label></li>');
+        $("#list-group-priorities").append('<li class="list-group-item"><a>' + data.Name + '</a> <label class="pull-right label" style="background-color:' + data.Color + '">Color</label></li>');
         $("#priority-modal").modal("hide");
     }, true, false);
 }
@@ -43,13 +43,21 @@ function CreateTag() {
 function CreateBoard() {
 
     ajax('/Backend/Board/Create', $('#create-board').serialize(), function (data) {
-        $("#list-group-boards").append('<li class="list-group-item"><a href="Backend/Board/Details/'+data.ID+'">' + data.Name + '</a></li>');
+        $("#list-group-boards").append('<li class="list-group-item"><a href="Backend/Board/Details/' + data.ID + '">' + data.Name + '</a></li>');
         $("#list-group-coloumn > li").each(function (index, object) {
             ajax('/Backend/Column/Create', { BoardID: data.ID, StateID: $(this).data("state-id"), SortIndex: index }, function (Columndata) {
-             
+
             }, true, false);
         });
     }, true, false);
 
     $("#board-modal").modal("hide");
+}
+
+
+function CreateIssue() {
+    ajax('/Backend/Issue/Create', $('#create-issue').serialize(), function (data) {
+        console.log(data);
+        $("#issue-modal").modal("hide");
+    }, true, false);
 }
