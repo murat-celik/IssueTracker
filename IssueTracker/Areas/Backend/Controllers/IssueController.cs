@@ -33,10 +33,41 @@ namespace IssueTracker.Areas.Backend.Controllers
 
                 throw new Exception(oIssueTrackerUnitOfWork.GetValidationErrors(ViewData.ModelState));
             }
-            catch (Exception ex)
+            catch (Exception Ex)
             {
                 this.oResultData.Status = AppCode.StatusEnum.Pasive;
-                this.oResultData.Message = oIssueTrackerUnitOfWork.GetValidationErrors(ViewData.ModelState);
+                this.oResultData.Message = Ex.Message;
+                return Json(oResultData);
+
+            }
+        }
+
+        // POST: Backend/Issue/ChangeColumn
+        [HttpPost]
+        public ActionResult ChangeColumn(int IssueID, int ColumnID)
+        {
+
+            try
+            {
+                Issue Model = this.oIssueTrackerUnitOfWork.IssueRepository.FindById(IssueID);
+                Model.ColumnID = ColumnID;
+
+                this.oIssueTrackerUnitOfWork.IssueRepository.Save(Model);
+
+                if (this.oIssueTrackerUnitOfWork.Save())
+                {
+                    this.oResultData.Status = AppCode.StatusEnum.Active;
+                    this.oResultData.Data = Model;
+                    this.oResultData.Message = "Issue State Changed";
+                    return Json(oResultData);
+                }
+
+                throw new Exception(oIssueTrackerUnitOfWork.GetValidationErrors(ViewData.ModelState));
+            }
+            catch (Exception Ex)
+            {
+                this.oResultData.Status = AppCode.StatusEnum.Pasive;
+                this.oResultData.Message = Ex.Message;
                 return Json(oResultData);
 
             }

@@ -16,13 +16,13 @@
         $(".sortable-td").sortable({
             connectWith: ".connectedSortable",
             start: function (event, ui) {
-                // $(ui.item[0]).parent().css('background-color', '#444');
-                oldParent = $(ui.item[0]).parent();
-                console.log(oldParent);
-                //console.log(ui.item[0].innerText);
+                OldColumnId = $(ui.item[0]).parent().data("column-id");
             },
             stop: function (event, ui) {
-                //console.log(ui.item[0].innerText);
+                if (OldColumnId != $(ui.item[0]).parent().data("column-id")) {
+                    ChangeColumn($(ui.item[0]).data("issue-id"), $(ui.item[0]).parent().data("column-id"));
+                }
+                
             }
         }).disableSelection();
     });
@@ -40,9 +40,6 @@
     </div>
 </div>
 <div class="row">
-    <div id="displaySuccess" style="display:none; position:fixed; height:42px; background-color:#009052; text-align: center; left:0px; right:0px; top:0px; z-index:1000000000; color:#ffffff;">
-        <h4 style="">Successful..</h4>
-    </div>
     <div class="container-fluid">
         <div class="row">
             <table class="table table-bordered">
@@ -50,26 +47,27 @@
                     <tr>
                         @foreach (var item in Model.Columns)
                         {
-                            <td data-column-id="@item.ID">@item.State.Name</td>
+                            <td data-column-id="@item.ID">@item.State.Name-@item.ID</td>
                         }
                     </tr>
                 </thead>
                 <tr>
                     @foreach (var Column in Model.Columns)
                     {
-                        <td class="sortable-td connectedSortable">
+                        <td class="sortable-td connectedSortable" data-column-id="@Column.ID">
                             @foreach (var Issue in Column.Issues)
                             {
-                                <div class="panel panel-default" style="border-top: 3px solid @Issue.Priority.Color !important;">
+                                <div class="panel panel-default" style="border-top: 3px solid @Issue.Priority.Color !important;" data-issue-id="@Issue.ID">
                                     <div class="panel-heading">[@Issue.ID] @Issue.Name <span class="label pull-right" style="background-color:@Issue.Priority.Color">@Issue.Priority.Name</span></div>
                                     <div class="panel-body">
                                         @Issue.GetDescriptionPart()
+                                        <br />
+                                        @Issue.ColumnID
                                     </div>
                                     <div class="panel-footer panel-footer">
                                         @Issue.Collobrator.User.Fullname()
                                         <i class="glyphicon glyphicon-tags pull-right"></i>&nbsp;
                                         <span class="pull-right">@Issue.RenderTags()</span>
-                                        
                                     </div>
                                 </div>
                             }

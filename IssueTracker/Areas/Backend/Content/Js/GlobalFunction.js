@@ -11,10 +11,20 @@ function stopLoading() {
 function displayMessage(message) {
     $("#display-message-text").text(message);
     $('#displayMessage').modal('show');
-  
 }
 
-function displaySuccess() {
+function displaySuccess(message) {
+   
+    if (message != 'undefined' && message != undefined) {
+        if (message.length > 0) {
+            console.log(message);
+            console.log($("#display-success-message"));
+            $("#display-success-message").html(message);
+        }
+    } else {
+        $("#display-success-message").html('Successful<i class="glyphicon glyphicon-ok"></i>');
+    }
+
     $("#displaySuccess").show("blind");
     setTimeout(function () {
         $("#displaySuccess").hide("blind");
@@ -49,11 +59,11 @@ function ajax(url, data, callBack, loading, isHtml) {
             complete: function () { ajaxStatus = true; stopLoading(); },
             success: function (response) {
                 if (isHtml != 'undefined' && isHtml == true) {
-                    displaySuccess();
                     callBack(response);
-                } else if (response.Status == 1) {
                     displaySuccess();
+                } else if (response.Status == 1) {
                     callBack(response.Data);
+                    displaySuccess(response.Message);
                 } else {
                     if (response.Message != 'undefined' && response.Message != "") {
                         displayMessage(response.Message);

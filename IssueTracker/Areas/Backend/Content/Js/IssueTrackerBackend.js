@@ -61,3 +61,10 @@ function CreateIssue() {
         $("#issue-modal").modal("hide");
     }, true, false);
 }
+
+
+function ChangeColumn(IssueID, ColumnID) {
+    ajax('/Backend/Issue/ChangeColumn', { IssueID: IssueID, ColumnID: ColumnID }, function (data) {
+
+    }, true, false);
+}

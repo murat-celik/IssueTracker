@@ -10,10 +10,12 @@ namespace IssueTracker.Repository
     public class IssueTrackerRepository<T> : IRepository<T> where T : class, AppCode.IBaseEntity
     {
         private DbSet<T> _DbSet;
+        private IssueTracker.AppCode.IssueTrackerContext _Context;
 
-        public IssueTrackerRepository(AppCode.IssueTrackerContext db)
+        public IssueTrackerRepository(AppCode.IssueTrackerContext Context)
         {
-            this._DbSet = db.Set<T>();
+            this._Context = Context;
+            this._DbSet = Context.Set<T>();
         }
 
         public void Insert(T Entity)
@@ -36,6 +38,7 @@ namespace IssueTracker.Repository
             Entity.DateTimeUpdated = DateTime.Now;
 
             this._DbSet.Attach(Entity);
+            this._Context.Entry(Entity).State = EntityState.Modified;
         }
 
         public void Save(T Entity)
@@ -102,6 +105,10 @@ namespace IssueTracker.Repository
 
         public void Delete(T Entity)
         {
+            if (this._Context.Entry(Entity).State == EntityState.Detached) //Concurrency için
+            {
+                _DbSet.Attach(Entity);
+            }
             _DbSet.Remove(Entity);
         }
 

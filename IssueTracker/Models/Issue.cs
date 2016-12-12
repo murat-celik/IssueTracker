@@ -53,7 +53,7 @@ namespace IssueTracker.Models
             {
                 return this.Description.Substring(0, Length);
             }
-            else if (this.Description.Length < Length)
+            else if (this.Description != null && this.Description.Length < Length)
             {
                 return this.Description;
             }

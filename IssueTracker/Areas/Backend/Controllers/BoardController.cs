@@ -37,7 +37,7 @@ namespace IssueTracker.Areas.Backend.Controllers
             catch (Exception ex)
             {
                 this.oResultData.Status = AppCode.StatusEnum.Pasive;
-                this.oResultData.Message = oIssueTrackerUnitOfWork.GetValidationErrors(ViewData.ModelState);
+                this.oResultData.Message = ex.Message;
                 return Json(oResultData);
 
             }
