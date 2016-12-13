@@ -18,17 +18,17 @@ namespace IssueTracker.Areas.Backend.Controllers
 
         // POST: Backend/Project/Create
         [HttpPost]
-        public ActionResult Create(Project oProject)
+        public ActionResult Create(Project model)
         {
 
             try
             {
-                this.oIssueTrackerUnitOfWork.ProjectRepository.Save(oProject);
+                this.oIssueTrackerUnitOfWork.ProjectRepository.Save(model);
 
                 if (this.oIssueTrackerUnitOfWork.Save())
                 {
                     this.oResultData.Status = AppCode.StatusEnum.Active;
-                    this.oResultData.Data = oProject;
+                    this.oResultData.Data = model;
                     this.oResultData.Message = "Project Create Successful.";
 
                     if (Request.Form.Get("ajax")!=null)
@@ -41,12 +41,12 @@ namespace IssueTracker.Areas.Backend.Controllers
 
                 throw new Exception(oIssueTrackerUnitOfWork.GetValidationErrors(ViewData.ModelState));
             }
-            catch (Exception ex)
+            catch (Exception Ex)
             {
                 if (Request.Form.Get("ajax") != null)
                 {
                     this.oResultData.Status = AppCode.StatusEnum.Pasive;
-                    this.oResultData.Message = oIssueTrackerUnitOfWork.GetValidationErrors(ViewData.ModelState);
+                    this.oResultData.Message = Ex.Message;
                     return Json(oResultData);
                 }
 
@@ -54,7 +54,7 @@ namespace IssueTracker.Areas.Backend.Controllers
             }
         }
 
-        // GET: Backend/Team/Details/5
+        // GET: Backend/Project/Details/5
         public ActionResult Details(int id)
         {
             Project Model = this.oIssueTrackerUnitOfWork.ProjectRepository.FindById(id, "UserCreated", "UserUpdated", "Team", "Tags", "Boards", "Boards.Columns");
