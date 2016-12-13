@@ -73,5 +73,15 @@ namespace IssueTracker.Areas.Backend.Controllers
             }
         }
 
+        // GET: Backend/Issue/Details/5
+        public ActionResult Details(int id)
+        {
+            Issue Model = this.oIssueTrackerUnitOfWork.IssueRepository.FindById(id, "UserCreated", "UserUpdated", "Board", "Project", "Collobrator", "Priority", "Type", "Column","Column.State", "Watchers", "Watchers.Collobrator", "Comments", "Comments.Collobrator","IssueTags", "IssueTags.Tag");
+
+            ViewData["States"] = this.oIssueTrackerUnitOfWork.StateRepository.Select().ToList<State>();
+
+            return View(Model);
+        }
+
     }
 }

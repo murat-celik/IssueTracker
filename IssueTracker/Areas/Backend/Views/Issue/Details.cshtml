@@ -1,0 +1,127 @@
+﻿@model IssueTracker.Models.Issue
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h4>ID-@Model.ID @Model.Name  </h4>
+                </div>
+                <div class="col-lg-3">
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+
+                    </div>
+                </div>
+            </div>
+            <div>
+                <sub>Created by : @Model.UserCreated.Fullname()  @Model.DateTimeCreated.ToString()  - Updated by @Model.UserUpdated.Fullname() @Model.DateTimeUpdated</sub>
+            </div>
+
+            <hr style="margin:10px;" />
+
+            <div id="issue-tags" class="panel panel-default">
+                <div class="panel-body">
+                    @Model.Description
+                </div>
+                <div class="panel-footer">
+                    @foreach (var item in Model.IssueTags)
+                    {
+                        <span class="badge label label-primary">@item.Tag.Name <i class="glyphicon glyphicon-remove"></i></span>
+                    }
+                </div>
+            </div>
+
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#comments">Comments</a> </li>
+                <li><a data-toggle="tab" href="#history">History</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="comments" class="tab-pane fade in active">
+                    <div class="bs-example" data-example-id="default-media">
+                        @foreach (var item in Model.Comments)
+                        {
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" src="http://placehold.it/32x32" data-holder-rendered="true" style="width: 32px; height: 32px;">
+                                    </a>
+                                </div> <div class="media-body"> <h5 class="media-heading"><a>@item.Collobrator.User.Fullname()</a></h5> @item.Description </div>
+                            </div>
+                            <hr style="margin:2px;" />
+                        }
+                    </div>
+                </div>
+                <div id="history" class="tab-pane">
+                    asasd
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Actions
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Dropdown link</a></li>
+                        <li><a href="#">Dropdown link</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="margin:10px;" />
+            <div class="panel panel-default">
+                <div class="panel-heading"><b><a> Related Property </a></b></div>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th><a> Project</a></th>
+                            <td>@Model.Project.Name</td>
+                        </tr>
+                        <tr>
+                            <th><a>Board</a></th>
+                            <td>@Model.Board.Name</td>
+                        </tr>
+                        <tr>
+                            <th><a> Column </a></th>
+                            <td>@Model.Column.State.Name <a><i class="glyphicon glyphicon-edit pull-right"></i></a> </td>
+                        </tr>
+                        <tr>
+                            <th><a>Priority</a></th>
+                            <td>@Model.Priority.Name <a><i class="glyphicon glyphicon-edit pull-right"></i></a> </td>
+                        </tr>
+                        <tr>
+                            <th><a> Type</a></th>
+                            <td>@Model.Type.Name <a><i class="glyphicon glyphicon-edit pull-right"></i></a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <b> Watcher</b>
+                </div>
+                <table class="table">
+                    <tbody>
+                        @foreach (var item in Model.Watchers)
+                        {
+                            <tr>
+                                <td><a> @item.Collobrator.User.Fullname()</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

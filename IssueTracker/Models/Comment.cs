@@ -13,6 +13,10 @@ namespace IssueTracker.Models
         [ForeignKey("CollobratorID")]
         public Collobrator Collobrator { get; set; }
 
+        public int IssueID { get; set; }
+        [ForeignKey("IssueID")]
+        public Issue Issue { get; set; }
+
         [Required, Column(TypeName = "varchar(MAX)")]
         public string Description { get; set; }
     }
