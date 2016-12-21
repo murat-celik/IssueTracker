@@ -65,6 +65,15 @@ function CreateIssue() {
 
 function ChangeColumn(IssueID, ColumnID) {
     ajax('/Backend/Issue/ChangeColumn', { IssueID: IssueID, ColumnID: ColumnID }, function (data) {
+        console.log(data);
+        $("#StateName").text(data.Column.State);
+    }, true, false);
+}
 
+function LoadColumns(BoardID) {
+    ajax('/Backend/Column/GetColumns/' + BoardID, { BoardID: BoardID }, function (data) {
+        $.each(data, function (key, item) {
+            $("#ColumnID").append('<option value="' + item.ID + '">' + item.State.Name + '</option>');
+        });
     }, true, false);
 }

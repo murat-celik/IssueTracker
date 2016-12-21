@@ -56,10 +56,11 @@ namespace IssueTracker.Areas.Backend.Controllers
 
                 if (this.oIssueTrackerUnitOfWork.Save())
                 {
+                    Model.Column = oIssueTrackerUnitOfWork.ColumnRepository.FindById(ColumnID, "State");
                     this.oResultData.Status = AppCode.StatusEnum.Active;
                     this.oResultData.Data = Model;
                     this.oResultData.Message = "Issue State Changed";
-                    return Json(oResultData);
+                    return Json(oResultData, JsonRequestBehavior.AllowGet);
                 }
 
                 throw new Exception(oIssueTrackerUnitOfWork.GetValidationErrors(ViewData.ModelState));

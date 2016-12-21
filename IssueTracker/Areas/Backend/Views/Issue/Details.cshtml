@@ -94,7 +94,7 @@
                         </tr>
                         <tr>
                             <th><a> Column </a></th>
-                            <td>@Model.Column.State.Name <a><i class="glyphicon glyphicon-edit pull-right"></i></a> </td>
+                            <td> <span id="StateName"> @Model.Column.State.Name</span> <a><i class="glyphicon glyphicon-edit pull-right" data-toggle="modal" data-target="#change-column-modal" onclick="LoadColumns(@Model.BoardID)"></i></a> </td>
                         </tr>
                         <tr>
                             <th><a>Priority</a></th>
@@ -125,3 +125,4 @@
         </div>
     </div>
 </div>
+@Html.Partial("~/Areas/Backend/Views/Issue/_Modals.cshtml",Model);

@@ -177,6 +177,7 @@
     <Content Include="Areas\Backend\Views\Project\_Modals.cshtml" />
     <Content Include="Areas\Backend\Views\Board\Details.cshtml" />
     <Content Include="Areas\Backend\Views\Issue\Details.cshtml" />
+    <Content Include="Areas\Backend\Views\Issue\_Modals.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

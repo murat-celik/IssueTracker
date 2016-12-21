@@ -30,6 +30,7 @@ namespace IssueTracker.AppCode
 
         public IssueTrackerContext()
         {
+            this.Configuration.ProxyCreationEnabled = false;
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<IssueTrackerContext, IssueTracker.Migrations.Configuration>());
         }
     }

@@ -38,5 +38,15 @@ namespace IssueTracker.Areas.Backend.Controllers
             }
         }
 
+        // GET: Backend/Column/GetColumns/5
+        public ActionResult GetColumns(int id)
+        {
+            this.oResultData.Data = this.oIssueTrackerUnitOfWork.ColumnRepository.Select(w => w.BoardID == id, "State").ToList<Column>();
+            this.oResultData.Status = AppCode.StatusEnum.Active;
+            this.oResultData.Message = "Init Columns";
+
+            return Json(oResultData, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
