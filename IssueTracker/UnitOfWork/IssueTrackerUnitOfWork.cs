@@ -22,6 +22,7 @@ namespace IssueTracker.UnitOfWork
         private IssueTrackerRepository<Board> _boardRepository;
         private IssueTrackerRepository<Column> _columnRepository;
         private IssueTrackerRepository<Issue> _issueRepository;
+        private IssueTrackerRepository<IssueTag> _issueTagRepository;
 
         public IssueTrackerRepository<Team> TeamRepository
         {
@@ -113,6 +114,15 @@ namespace IssueTracker.UnitOfWork
             }
         }
 
+        public IssueTrackerRepository<IssueTag> IssueTagRepository
+        {
+            get
+            {
+                if (_issueTagRepository == null)
+                    _issueTagRepository = new IssueTrackerRepository<IssueTag>(oIssueTrackerContext);
+                return _issueTagRepository;
+            }
+        }
 
         public bool Save()
         {
@@ -159,7 +169,7 @@ namespace IssueTracker.UnitOfWork
         public string GetValidationErrors(System.Web.Mvc.ModelStateDictionary ModelState)
         {
             string ErrorMessage = "";
-            if (ModelState.Values.Count >0)
+            if (ModelState.Values.Count > 0)
             {
                 ErrorMessage = "<ul>";
                 foreach (System.Web.Mvc.ModelState modelState in ModelState.Values)

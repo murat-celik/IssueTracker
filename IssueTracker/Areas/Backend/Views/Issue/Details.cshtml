@@ -26,7 +26,7 @@
                 <div class="panel-footer">
                     @foreach (var item in Model.IssueTags)
                     {
-                        <span class="badge label label-primary">@item.Tag.Name <i class="glyphicon glyphicon-remove"></i></span>
+                        <span class="badge label label-primary">@item.Tag.Name <i class="glyphicon glyphicon-remove" data-issue-tag-id="@item.ID" onclick="DeleteIssueTag(this)"></i></span>
                     }
                 </div>
             </div>

@@ -54,14 +54,12 @@ function CreateBoard() {
     $("#board-modal").modal("hide");
 }
 
-
 function CreateIssue() {
     ajax('/Backend/Issue/Create', $('#create-issue').serialize(), function (data) {
         console.log(data);
         $("#issue-modal").modal("hide");
     }, true, false);
 }
-
 
 function ChangeColumn(IssueID, ColumnID) {
     ajax('/Backend/Issue/ChangeColumn', { IssueID: IssueID, ColumnID: ColumnID }, function (data) {
@@ -75,5 +73,11 @@ function LoadColumns(BoardID) {
         $.each(data, function (key, item) {
             $("#ColumnID").append('<option value="' + item.ID + '">' + item.State.Name + '</option>');
         });
+    }, true, false);
+}
+
+function DeleteIssueTag(Element) {
+    ajax('/Backend/IssueTag/Delete/' + $(Element).data("issue-tag-id"), {}, function (data) {
+        $(Element).parent().remove();
     }, true, false);
 }

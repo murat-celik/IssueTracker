@@ -178,7 +178,12 @@
     <Content Include="Areas\Backend\Views\Board\Details.cshtml" />
     <Content Include="Areas\Backend\Views\Issue\Details.cshtml" />
     <Content Include="Areas\Backend\Views\Issue\_Modals.cshtml" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\IssueTracker.csprojResolveAssemblyReference.cache" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="obj\Debug\IssueTracker.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\IssueTracker.dll" />
+    <Content Include="obj\Debug\IssueTracker.pdb" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -204,10 +209,14 @@
     <Compile Include="Areas\Backend\Controllers\StateController.cs" />
     <Compile Include="Areas\Backend\Controllers\TagController.cs" />
     <Compile Include="Areas\Backend\Controllers\TeamController.cs" />
+    <Compile Include="Areas\Backend\Controllers\IssueTagController.cs" />
     <Compile Include="Areas\Backend\Controllers\TypeController.cs" />
     <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="Models\TeamCollobrator.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="UnitOfWork\IssueTrackerUnitOfWork.cs" />
     <Compile Include="UnitOfWork\_IUnitOfWork.cs" />
     <Compile Include="Repository\_IRepository.cs" />
@@ -265,6 +274,7 @@
     <Folder Include="Areas\Backend\Views\State\" />
     <Folder Include="Areas\Backend\Views\Tag\" />
     <Folder Include="Areas\Backend\Views\Type\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
