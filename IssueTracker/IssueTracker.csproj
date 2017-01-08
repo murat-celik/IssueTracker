@@ -56,6 +56,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -102,6 +104,7 @@
     <Content Include="Areas\Backend\Content\Css\Timeline.css" />
     <Content Include="Areas\Backend\Content\Js\GlobalFunction.js" />
     <Content Include="Areas\Backend\Content\Js\IssueTrackerBackend.js" />
+    <Content Include="Areas\Backend\Content\Js\notify.js" />
     <Content Include="Areas\Backend\Images\loading.gif" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\EntityFramework.SqlServer.dll" />
@@ -275,6 +278,9 @@
     <Folder Include="Areas\Backend\Views\Tag\" />
     <Folder Include="Areas\Backend\Views\Type\" />
     <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

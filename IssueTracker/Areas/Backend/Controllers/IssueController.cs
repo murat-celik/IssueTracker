@@ -58,7 +58,7 @@ namespace IssueTracker.Areas.Backend.Controllers
                 {
                     Model.Column = oIssueTrackerUnitOfWork.ColumnRepository.FindById(ColumnID, "State");
                     this.oResultData.Status = AppCode.StatusEnum.Active;
-                    this.oResultData.Data = Model;
+                    this.oResultData.Data = Model.Column.State.Name;
                     this.oResultData.Message = "Issue State Changed";
                     return Json(oResultData, JsonRequestBehavior.AllowGet);
                 }

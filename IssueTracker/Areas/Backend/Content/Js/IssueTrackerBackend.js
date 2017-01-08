@@ -56,20 +56,20 @@ function CreateBoard() {
 
 function CreateIssue() {
     ajax('/Backend/Issue/Create', $('#create-issue').serialize(), function (data) {
-        console.log(data);
         $("#issue-modal").modal("hide");
     }, true, false);
 }
 
 function ChangeColumn(IssueID, ColumnID) {
     ajax('/Backend/Issue/ChangeColumn', { IssueID: IssueID, ColumnID: ColumnID }, function (data) {
-        console.log(data);
-        $("#StateName").text(data.Column.State);
+        $("#StateName").text(data);
+        $("#change-column-modal").modal("hide");
     }, true, false);
 }
 
 function LoadColumns(BoardID) {
     ajax('/Backend/Column/GetColumns/' + BoardID, { BoardID: BoardID }, function (data) {
+        $("#ColumnID").html("");
         $.each(data, function (key, item) {
             $("#ColumnID").append('<option value="' + item.ID + '">' + item.State.Name + '</option>');
         });

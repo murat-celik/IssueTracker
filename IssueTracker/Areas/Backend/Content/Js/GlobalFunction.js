@@ -14,25 +14,33 @@ function displayMessage(message) {
 }
 
 function displaySuccess(message) {
-   
     if (message != 'undefined' && message != undefined) {
-        if (message.length > 0) {
-            console.log(message);
-            console.log($("#display-success-message"));
-            $("#display-success-message").html(message);
-        }
+        $.notify(message, 'success');
     } else {
-        $("#display-success-message").html('Successful<i class="glyphicon glyphicon-ok"></i>');
+        $.notify("Success", 'success');
     }
+   
+   
 
-    $("#displaySuccess").show("blind");
-    setTimeout(function () {
-        $("#displaySuccess").hide("blind");
-    }, 1000);
+    //if (message != 'undefined' && message != undefined) {
+    //    if (message.length > 0) {
+    //        console.log(message);
+    //        console.log($("#display-success-message"));
+    //        $("#display-success-message").html(message);
+    //    }
+    //} else {
+    //    $("#display-success-message").html('Successful<i class="glyphicon glyphicon-ok"></i>');
+    //}
+
+    //$("#displaySuccess").show("blind");
+    //setTimeout(function () {
+    //    $("#displaySuccess").hide("blind");
+    //}, 1000);
 
 }
 
 function displayFailed() {
+    //$.notify(message, 'success');
     $("#displayFailed").show("blind");
     setTimeout(function () {
         $("#displayFailed").hide("blind");
