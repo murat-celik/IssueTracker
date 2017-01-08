@@ -106,6 +106,39 @@ namespace IssueTracker.Areas.Backend.Controllers
 
             }
         }
+
+        //POST: Backend/Issue/ChangeType
+        [HttpPost]
+        public ActionResult ChangeType(int IssueID, int TypeID)
+        {
+            try
+            {
+                Issue Model = this.oIssueTrackerUnitOfWork.IssueRepository.FindById(IssueID);
+                Model.TypeID = TypeID;
+
+                this.oIssueTrackerUnitOfWork.IssueRepository.Save(Model);
+
+                if (this.oIssueTrackerUnitOfWork.Save())
+                {
+                    Model.Type = oIssueTrackerUnitOfWork.TypeRepository.FindById(TypeID);
+                    this.oResultData.Status = AppCode.StatusEnum.Active;
+                    this.oResultData.Data = Model.Type;
+                    this.oResultData.Message = "Issue Type Changed";
+
+                    return Json(oResultData, JsonRequestBehavior.AllowGet);
+                }
+
+                throw new Exception(oIssueTrackerUnitOfWork.GetValidationErrors(ViewData.ModelState));
+            }
+            catch (Exception Ex)
+            {
+                this.oResultData.Status = AppCode.StatusEnum.Pasive;
+                this.oResultData.Message = Ex.Message;
+                return Json(oResultData);
+
+            }
+        }
+
         // GET: Backend/Issue/Details/5
         public ActionResult Details(int id)
         {

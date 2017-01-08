@@ -94,6 +94,25 @@ function ChangePriority(IssueID, PriorityID) {
     }, true, false);
 }
 
+function LoadTypes() {
+    ajax('/Backend/Type/GetTypes', {}, function (data) {
+        $("#TypeID").html("");
+
+        $.each(data, function (key, item) {
+            $("#TypeID").append('<option value="' + item.ID + '">' + item.Name + '</option>');
+        });
+
+    }, true, false);
+}
+
+function ChangeType(IssueID, TypeID) {
+    ajax('/Backend/Issue/ChangeType', { IssueID: IssueID, TypeID: TypeID }, function (data) {
+        $("#TypeName_" + IssueID).text(data.Name);
+        $("#change-type-modal").modal("hide");
+    }, true, false);
+}
+
+
 function DeleteIssueTag(Element) {
     ajax('/Backend/IssueTag/Delete/' + $(Element).data("issue-tag-id"), {}, function (data) {
         $(Element).parent().remove();

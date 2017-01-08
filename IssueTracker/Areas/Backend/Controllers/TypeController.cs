@@ -36,5 +36,16 @@ namespace IssueTracker.Areas.Backend.Controllers
 
             }
         }
+
+        //POST: Backend/Type/GetTypes
+        [HttpPost]
+        public ActionResult GetTypes()
+        {
+            this.oResultData.Data = oIssueTrackerUnitOfWork.TypeRepository.Select().ToList<Models.Type>();
+            this.oResultData.Status = AppCode.StatusEnum.Active;
+            this.oResultData.Message = "Load Types";
+
+            return Json(oResultData, JsonRequestBehavior.AllowGet);
+        }
     }
 }

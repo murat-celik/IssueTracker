@@ -56,4 +56,32 @@
         </div>
     </div>
     <!--change-priority-modal-->
+
+    <!--change-type-modal-->
+    <div id="change-type-modal" class="modal fade" role="dialog" aria-labelledby="change-type-modal" style="padding-right: 0px !important; ">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="type-modal-label">Change Type</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="change-column-modal-form" method="post">
+                        <div class="form-group row">
+                            <label class="col-xs-2 col-form-label">Type</label>
+                            <div class="col-xs-10">
+                                <select id="TypeID" name="TypeID" class="form-control"></select>
+                            </div>
+                        </div>
+                        <input id="IssueID" name="IssueID" type="hidden" value="@Model.ID" />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="ChangeType($('#IssueID').val(), $('#TypeID').val())">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--change-type-modal-->
 </div>

@@ -112,8 +112,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <th><a> Type</a></th>
-                            <td>@Model.Type.Name <a><i class="glyphicon glyphicon-edit pull-right"></i></a> </td>
+                            <th><a>Type</a></th>
+                            <td>
+                                <span id="TypeName_@Model.ID"> @Model.Type.Name</span>
+                                <a>
+                                    <i class="glyphicon glyphicon-edit pull-right" data-toggle="modal" data-target="#change-type-modal" onclick="LoadTypes()"></i>
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
