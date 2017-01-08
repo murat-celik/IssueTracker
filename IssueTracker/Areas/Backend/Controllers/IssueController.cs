@@ -9,13 +9,13 @@ namespace IssueTracker.Areas.Backend.Controllers
 {
     public class IssueController : AppCode.BaseController
     {
-        // GET: Backend/Issue
+        //GET: Backend/Issue
         public ActionResult Index()
         {
             return View();
         }
 
-        // POST: Backend/Issue/Create
+        //POST: Backend/Issue/Create
         [HttpPost]
         public ActionResult Create(Issue model)
         {
@@ -42,7 +42,7 @@ namespace IssueTracker.Areas.Backend.Controllers
             }
         }
 
-        // POST: Backend/Issue/ChangeColumn
+        //POST: Backend/Issue/ChangeColumn
         [HttpPost]
         public ActionResult ChangeColumn(int IssueID, int ColumnID)
         {
@@ -74,6 +74,38 @@ namespace IssueTracker.Areas.Backend.Controllers
             }
         }
 
+        //POST: Backend/Issue/ChangePriority
+        [HttpPost]
+        public ActionResult ChangePriority(int IssueID, int PriorityID)
+        {
+
+            try
+            {
+                Issue Model = this.oIssueTrackerUnitOfWork.IssueRepository.FindById(IssueID);
+                Model.PriorityID = PriorityID;
+
+                this.oIssueTrackerUnitOfWork.IssueRepository.Save(Model);
+
+                if (this.oIssueTrackerUnitOfWork.Save())
+                {
+                    Model.Priority = oIssueTrackerUnitOfWork.PriorityRepository.FindById(PriorityID);
+                    this.oResultData.Status = AppCode.StatusEnum.Active;
+                    this.oResultData.Data = Model.Priority;
+                    this.oResultData.Message = "Issue Priority Changed";
+
+                    return Json(oResultData, JsonRequestBehavior.AllowGet);
+                }
+
+                throw new Exception(oIssueTrackerUnitOfWork.GetValidationErrors(ViewData.ModelState));
+            }
+            catch (Exception Ex)
+            {
+                this.oResultData.Status = AppCode.StatusEnum.Pasive;
+                this.oResultData.Message = Ex.Message;
+                return Json(oResultData);
+
+            }
+        }
         // GET: Backend/Issue/Details/5
         public ActionResult Details(int id)
         {

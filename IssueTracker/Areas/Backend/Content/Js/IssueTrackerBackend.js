@@ -62,7 +62,7 @@ function CreateIssue() {
 
 function ChangeColumn(IssueID, ColumnID) {
     ajax('/Backend/Issue/ChangeColumn', { IssueID: IssueID, ColumnID: ColumnID }, function (data) {
-        $("#StateName").text(data);
+        $("#StateName_"+IssueID).text(data);
         $("#change-column-modal").modal("hide");
     }, true, false);
 }
@@ -73,6 +73,24 @@ function LoadColumns(BoardID) {
         $.each(data, function (key, item) {
             $("#ColumnID").append('<option value="' + item.ID + '">' + item.State.Name + '</option>');
         });
+    }, true, false);
+}
+
+function LoadPriorities() {
+    ajax('/Backend/Priority/GetPriorities', {}, function (data) {
+        
+        $("#PriorityID").html("");
+        $.each(data, function (key, item) {
+            $("#PriorityID").append('<option value="' + item.ID + '">' + item.Name + '</option>');
+        });
+    }, true, false);
+}
+
+function ChangePriority(IssueID, PriorityID) {  
+    ajax('/Backend/Issue/ChangePriority', { IssueID: IssueID, PriorityID: PriorityID }, function (data) {
+        $("#PriorityName_" + IssueID).text(data.Name);
+        $("#PriorityColor_" + IssueID).attr("style", "color:"+data.Color);
+        $("#change-priority-modal").modal("hide");
     }, true, false);
 }
 

@@ -94,11 +94,22 @@
                         </tr>
                         <tr>
                             <th><a> Column </a></th>
-                            <td> <span id="StateName"> @Model.Column.State.Name</span> <a><i class="glyphicon glyphicon-edit pull-right" data-toggle="modal" data-target="#change-column-modal" onclick="LoadColumns(@Model.BoardID)"></i></a> </td>
+                            <td>
+                                <span id="StateName_@Model.ID"> @Model.Column.State.Name</span>
+                                <a>
+                                    <i class="glyphicon glyphicon-edit pull-right" data-toggle="modal" data-target="#change-column-modal" onclick="LoadColumns(@Model.BoardID)"></i>
+                                </a>
+                            </td>
                         </tr>
                         <tr>
                             <th><a>Priority</a></th>
-                            <td>@Model.Priority.Name <span class="glyphicon glyphicon-stop" aria-hidden="true" style="color:@Model.Priority.Color"></span>  <a><i class="glyphicon glyphicon-edit pull-right"></i></a> </td>
+                            <td>
+                                <span id="PriorityName_@Model.ID">@Model.Priority.Name</span>
+                                <span id="PriorityColor_@Model.ID" class="glyphicon glyphicon-stop" aria-hidden="true" style="color:@Model.Priority.Color"></span>
+                                <a>
+                                    <i class="glyphicon glyphicon-edit pull-right" data-toggle="modal" data-target="#change-priority-modal" onclick="LoadPriorities()"></i>
+                                </a>
+                            </td>
                         </tr>
                         <tr>
                             <th><a> Type</a></th>
@@ -125,4 +136,4 @@
         </div>
     </div>
 </div>
-@Html.Partial("~/Areas/Backend/Views/Issue/_Modals.cshtml",Model);
+@Html.Partial("~/Areas/Backend/Views/Issue/_Modals.cshtml", Model);

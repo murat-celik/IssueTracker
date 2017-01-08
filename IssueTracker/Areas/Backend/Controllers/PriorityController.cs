@@ -36,5 +36,16 @@ namespace IssueTracker.Areas.Backend.Controllers
 
             }
         }
+
+        //POST: Backend/Priority/GetPriorities
+        [HttpPost]
+        public ActionResult GetPriorities()
+        {
+            this.oResultData.Data = oIssueTrackerUnitOfWork.PriorityRepository.Select().ToList<Priority>();
+            this.oResultData.Status = AppCode.StatusEnum.Active;
+            this.oResultData.Message = "Load Priorities";
+
+            return Json(oResultData, JsonRequestBehavior.AllowGet);
+        }
     }
 }
