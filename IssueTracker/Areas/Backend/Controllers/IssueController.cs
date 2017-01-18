@@ -139,6 +139,35 @@ namespace IssueTracker.Areas.Backend.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult SetInProcess(int IssueID, bool InProcess)
+        {
+            try
+            {
+                Issue Model = this.oIssueTrackerUnitOfWork.IssueRepository.FindById(IssueID);
+                Model.InProcess = InProcess;
+
+                this.oIssueTrackerUnitOfWork.IssueRepository.Save(Model);
+
+                if (this.oIssueTrackerUnitOfWork.Save())
+                {
+                    this.oResultData.Status = AppCode.StatusEnum.Active;
+                    this.oResultData.Data = Model;
+                    this.oResultData.Message =  InProcess == true ?  "Issue InProcess" : "Issue Paused";
+                    return Json(oResultData, JsonRequestBehavior.AllowGet);
+                }
+
+                throw new Exception(oIssueTrackerUnitOfWork.GetValidationErrors(ViewData.ModelState));
+            }
+            catch (Exception Ex)
+            {
+                this.oResultData.Status = AppCode.StatusEnum.Pasive;
+                this.oResultData.Message = Ex.Message;
+                return Json(oResultData);
+
+            }
+        }
+
         // GET: Backend/Issue/Details/5
         public ActionResult Details(int id)
         {

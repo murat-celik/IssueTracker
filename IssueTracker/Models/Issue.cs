@@ -14,32 +14,33 @@ namespace IssueTracker.Models
         public string Name { get; set; }
         [Column(TypeName = "varchar(MAX)")]
         public string Description { get; set; }
-
-        public int? BoardID { get; set; }
-        [ForeignKey("BoardID")]
-        public Board Board { get; set; }
+        [Required]
+        public bool InProcess { get; set; }
 
         public int ProjectID { get; set; }
+        public int? BoardID { get; set; }
+        public int? CollobratorID { get; set; }
+        public int? ColumnID { get; set; }
+        public int? PriorityID { get; set; }
+        public int? TypeID { get; set; }
+
         [ForeignKey("ProjectID")]
         public Project Project { get; set; }
 
-        public int? CollobratorID { get; set; }
+        [ForeignKey("BoardID")]
+        public Board Board { get; set; }
+
         [ForeignKey("CollobratorID")]
         public Collobrator Collobrator { get; set; }
 
-        public int? ColumnID { get; set; }
         [ForeignKey("ColumnID")]
         public Column Column { get; set; }
 
-        public int? PriorityID { get; set; }
         [ForeignKey("PriorityID")]
         public Priority Priority { get; set; }
 
-        public int? TypeID { get; set; }
         [ForeignKey("TypeID")]
         public Type Type { get; set; }
-
-
 
         public virtual List<Watcher> Watchers { get; set; }
         public virtual List<Comment> Comments { get; set; }
@@ -79,12 +80,11 @@ namespace IssueTracker.Models
                     }
                     else
                     {
-                        ReturnHTML = ReturnHTML + Seperator + "<span class='badge'>" + item.Tag+ "</span>";
+                        ReturnHTML = ReturnHTML + Seperator + "<span class='badge'>" + item.Tag + "</span>";
                     }
-
-
                 }
             }
+
             HtmlString oHtmlString = new HtmlString(ReturnHTML);
 
             return oHtmlString;

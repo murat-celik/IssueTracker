@@ -51,6 +51,11 @@
                             <hr style="margin:2px;" />
                         }
                     </div>
+                    <textarea class="form-control"></textarea>
+                    <hr style="margin:2px;" />
+                    <button class="btn btn-success btn-sm">
+                        <i class="glyphicon glyphicon-comment"></i> Create Comment
+                    </button>
                 </div>
                 <div id="history" class="tab-pane">
                     asasd
@@ -60,8 +65,12 @@
         </div>
         <div class="col-lg-4">
             <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
-                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default" id="InProcess_@Model.ID" data-issue-id="@Model.ID" onclick="SetInProcess(this,true)"   style="@if (Model.InProcess == true) { Write("color:green"); }">
+                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default" id="NotInProcess_@Model.ID" data-issue-id="@Model.ID" onclick="SetInProcess(this,false)"  style="@if (Model.InProcess == false) { Write("color:green"); }">
+                    <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+                </button>
                 <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
                 <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span></button>
                 <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></button>
@@ -86,11 +95,11 @@
                     <tbody>
                         <tr>
                             <th><a> Project</a></th>
-                            <td>@Model.Project.Name</td>
+                            <td><a href="/Backend/Project/Details/@Model.ProjectID">@Model.Project.Name</a></td>
                         </tr>
                         <tr>
                             <th><a>Board</a></th>
-                            <td>@Model.Board.Name</td>
+                            <td><a href="/Backend/Board/Details/@Model.BoardID">@Model.Board.Name</a></td>
                         </tr>
                         <tr>
                             <th><a> Column </a></th>
@@ -141,4 +150,4 @@
         </div>
     </div>
 </div>
-@Html.Partial("~/Areas/Backend/Views/Issue/_Modals.cshtml", Model);
+@Html.Partial("~/Areas/Backend/Views/Issue/_Modals.cshtml", Model)

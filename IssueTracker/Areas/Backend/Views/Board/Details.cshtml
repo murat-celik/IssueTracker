@@ -1,14 +1,8 @@
 ﻿@model IssueTracker.Models.Board
 
 <style>
-    .sortable-td > .panel {
-        cursor: move;
-    }
-
-    .ui-sortable-helper {
-        transform: scale(0.1, 0.6);
-        border: 1px solid #0094ff;
-    }
+    .sortable-td > .panel { cursor: move; }
+    .ui-sortable-helper { /*transform: scale(0.1, 0.6);*/ border: 1px solid #0094ff; }
 </style>
 <script>
     oldParent = null;
@@ -22,64 +16,82 @@
                 if (OldColumnId != $(ui.item[0]).parent().data("column-id")) {
                     ChangeColumn($(ui.item[0]).data("issue-id"), $(ui.item[0]).parent().data("column-id"));
                 }
-                
             }
         }).disableSelection();
     });
 </script>
 
+
 <div class="row">
-    <div class="col-lg-6">
-        <h4>@Model.Project.Name</h4>
-    </div>
-    <div class="col-lg-5">
-        @Model.Description
-    </div>
-    <div class="col-lg-1">
-        <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#issue-modal"><i class="glyphicon glyphicon-plus"></i> Create Issue</button>
-    </div>
-</div>
-<div class="row">
-    <div class="container-fluid">
-        <div class="row">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        @foreach (var item in Model.Columns)
-                        {
-                            <td data-column-id="@item.ID">@item.State.Name-@item.ID</td>
-                        }
-                    </tr>
-                </thead>
-                <tr>
-                    @foreach (var Column in Model.Columns)
-                    {
-                        <td class="sortable-td connectedSortable" data-column-id="@Column.ID">
-                            @foreach (var Issue in Column.Issues)
-                            {
-                                <div class="panel panel-default" style="border-top: 3px solid @Issue.Priority.Color !important;" data-issue-id="@Issue.ID">
-                                    <div class="panel-heading">[@Issue.ID] @Issue.Name <span class="label pull-right" style="background-color:@Issue.Priority.Color">@Issue.Priority.Name</span></div>
-                                    <div class="panel-body">
-                                        @Issue.GetDescriptionPart()
-                                        <br />
-                                        @Issue.ColumnID
-                                    </div>
-                                    <div class="panel-footer panel-footer">
-                                        @Issue.Collobrator.User.Fullname()
-                                        <i class="glyphicon glyphicon-tags pull-right"></i>&nbsp;
-                                        <span class="pull-right">@Issue.RenderTags()</span>
-                                    </div>
-                                </div>
-                            }
-                        </td>
-                    }
-                </tr>
-            </table>
+    <div class="col-lg-2">
+        <button class="btn btn-success btn-sm pull-left" data-toggle="modal" data-target="#issue-modal"><i class="glyphicon glyphicon-plus"></i> Create Issue</button>
+        <div class="dropdown pull-right">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                Board
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                @foreach (var item in Model.Project.Boards)
+            {
+                    <li><a href="#">@item.Name</a></li>
+                }
+            </ul>
         </div>
     </div>
+    <form class="col-lg-10">
+        <div class="input-group">
+            <input type="text" name="keyword" placeholder="search..." class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-primary">Go</button>
+            </span>
+        </div>
+    </form>
 </div>
-
-<div id="issue-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="issue-modal" style="padding-right: 0px !important; ">
+<hr />
+<div class="row">
+    <div class="container-fluid">
+        <table class="table table-bordered" style="background-color:#fff;">
+            <thead>
+                <tr>
+                    @foreach (var item in Model.Columns)
+                    {
+                        <td data-column-id="@item.ID">@item.State.Name</td>
+                    }
+                </tr>
+            </thead>
+            <tr>
+                @foreach (var Column in Model.Columns)
+                {
+                    <td class="sortable-td connectedSortable" data-column-id="@Column.ID">
+                        @foreach (var Issue in Column.Issues)
+                        {
+                            <div class="panel panel-default" style="border-top: 3px solid @Issue.Priority.Color !important;" data-issue-id="@Issue.ID" ondblclick="alert(11)">
+                                <div class="panel-heading">
+                                    <a href="/Backend/Issue/Details/@Issue.ID"> [@Issue.ID] @Issue.Name</a>
+                                    <div class="pull-right">
+                                        <i id="InProcess_@Issue.ID" data-issue-id="@Issue.ID" onclick="SetInProcess(this,true)" class="glyphicon glyphicon-play" style="@if(Issue.InProcess == true) { Write("color:green"); }"></i>
+                                        <i id="NotInProcess_@Issue.ID" data-issue-id="@Issue.ID" onclick="SetInProcess(this,false)" class="glyphicon glyphicon-pause" style="@if (Issue.InProcess == false) { Write("color:green"); } "></i>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    @Issue.GetDescriptionPart()
+                                    <br />
+                                    @Issue.ColumnID
+                                </div>
+                                <div class="panel-footer panel-footer">
+                                    @if(Issue.Collobrator != null){ Write(Issue.Collobrator.User.Fullname()); }
+                                    <span class="label pull-right" style="background-color:@Issue.Priority.Color">@Issue.Priority.Name</span>
+                                    <div>@Issue.RenderTags(" ")</div>
+                                </div>
+                            </div>
+                        }
+                    </td>
+                }
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="issue-modal" class="modal fade" role="dialog" aria-labelledby="issue-modal" style="padding-right: 0px !important; ">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
